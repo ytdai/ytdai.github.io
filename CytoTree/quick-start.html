@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Quick Start | CytoTree Tutorial</title>
+  <meta name="description" content="This is the tutorial of CytoTree R/Biocondcutor package." />
+  <meta name="generator" content="bookdown 0.21.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Quick Start | CytoTree Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the tutorial of CytoTree R/Biocondcutor package." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Quick Start | CytoTree Tutorial" />
+  
+  <meta name="twitter:description" content="This is the tutorial of CytoTree R/Biocondcutor package." />
+  
+
+<meta name="author" content="Yuting Dai" />
+
+
+<meta name="date" content="2020-10-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="ti.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://github.com/JhuangLab/CytoTree"><center><b>CytoTree</b></center></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="quick-start.html"><a href="quick-start.html"><i class="fa fa-check"></i><b>2</b> Quick Start</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="quick-start.html"><a href="quick-start.html#overview-of-workflow"><i class="fa fa-check"></i><b>2.1</b> Overview of Workflow</a></li>
+<li class="chapter" data-level="2.2" data-path="quick-start.html"><a href="quick-start.html#installation"><i class="fa fa-check"></i><b>2.2</b> Installation</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="quick-start.html"><a href="quick-start.html#github"><i class="fa fa-check"></i><b>2.2.1</b> GitHub</a></li>
+<li class="chapter" data-level="2.2.2" data-path="quick-start.html"><a href="quick-start.html#bioconductor"><i class="fa fa-check"></i><b>2.2.2</b> Bioconductor</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="quick-start.html"><a href="quick-start.html#quick-start-code"><i class="fa fa-check"></i><b>2.3</b> Quick-start code</a></li>
+<li class="chapter" data-level="2.4" data-path="quick-start.html"><a href="quick-start.html#visualization"><i class="fa fa-check"></i><b>2.4</b> Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ti.html"><a href="ti.html"><i class="fa fa-check"></i><b>3</b> Trajectory Inference (TI)</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ti.html"><a href="ti.html#preprocessing"><i class="fa fa-check"></i><b>3.1</b> Preprocessing</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="ti.html"><a href="ti.html#preprocessing-using-flowcore"><i class="fa fa-check"></i><b>3.1.1</b> Preprocessing using <code>flowCore</code></a></li>
+<li class="chapter" data-level="3.1.2" data-path="ti.html"><a href="ti.html#preprocessing-using-cytotree"><i class="fa fa-check"></i><b>3.1.2</b> Preprocessing using <code>CytoTree</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="ti.html"><a href="ti.html#clustering"><i class="fa fa-check"></i><b>3.2</b> Clustering</a></li>
+<li class="chapter" data-level="3.3" data-path="ti.html"><a href="ti.html#dimenssionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Dimenssionality Reduction</a></li>
+<li class="chapter" data-level="3.4" data-path="ti.html"><a href="ti.html#build-trajectory"><i class="fa fa-check"></i><b>3.4</b> Build Trajectory</a></li>
+<li class="chapter" data-level="3.5" data-path="ti.html"><a href="ti.html#optimazation"><i class="fa fa-check"></i><b>3.5</b> Optimazation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis of TI</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analysis.html"><a href="analysis.html#pseudotime"><i class="fa fa-check"></i><b>4.1</b> Pseudotime</a></li>
+<li class="chapter" data-level="4.2" data-path="analysis.html"><a href="analysis.html#intermediate-states"><i class="fa fa-check"></i><b>4.2</b> Intermediate States</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="time-course-data-use-case.html"><a href="time-course-data-use-case.html"><i class="fa fa-check"></i><b>5</b> Time-course data use case</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="time-course-data-use-case.html"><a href="time-course-data-use-case.html#step-1.-preprocessing"><i class="fa fa-check"></i><b>5.1</b> Step 1. Preprocessing</a></li>
+<li class="chapter" data-level="5.2" data-path="time-course-data-use-case.html"><a href="time-course-data-use-case.html#step-2.-trajectory"><i class="fa fa-check"></i><b>5.2</b> Step 2. Trajectory</a></li>
+<li class="chapter" data-level="5.3" data-path="time-course-data-use-case.html"><a href="time-course-data-use-case.html#step-3.-pseudotime"><i class="fa fa-check"></i><b>5.3</b> Step 3. Pseudotime</a></li>
+<li class="chapter" data-level="5.4" data-path="time-course-data-use-case.html"><a href="time-course-data-use-case.html#step-4.-subset-cyt"><i class="fa fa-check"></i><b>5.4</b> Step 4. Subset CYT</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="advanced-usage.html"><a href="advanced-usage.html"><i class="fa fa-check"></i><b>6</b> Advanced Usage</a></li>
+<li class="chapter" data-level="7" data-path="structure-of-cytotree.html"><a href="structure-of-cytotree.html"><i class="fa fa-check"></i><b>7</b> Structure of CytoTree</a></li>
+<li class="chapter" data-level="8" data-path="about-cytotree.html"><a href="about-cytotree.html"><i class="fa fa-check"></i><b>8</b> About CytoTree</a>
+<ul>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#bug-reports"><i class="fa fa-check"></i>Bug Reports</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#current-version"><i class="fa fa-check"></i>Current version</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#acknowledgement"><i class="fa fa-check"></i>Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#session-information"><i class="fa fa-check"></i>Session Information</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About The Author</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CytoTree Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="quick_start" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Quick Start</h1>
+<p>In this chapter, we will describe the four main functionalities of <code>CytoTree</code> and present the quick-start code template of <code>CytoTree</code> workflow. The data in this chapter are included in the <code>CytoTree</code> package. And through this chapter, you will learn:</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>The workflow of <code>CytoTree</code>.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>How to build a CYT object.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>A quick-start code template of <code>CytoTree</code> workflow.</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>A brief code template for visualization of CYT object.</li>
+</ol></li>
+</ul>
+<p>And for the detailed version and advanced application of <code>CytoTree</code>, please read Chapter <a href="ti.html#ti">3</a> and Chapter <a href="analysis.html#analysis">4</a>.</p>
+<div id="overview-of-workflow" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Overview of Workflow</h2>
+<p>The <code>CytoTree</code> package is developed to complete the majority of standard analysis and visualization workflow for FCS data. In CytoTree workflow, an S4 object in R is built to implement the statistical and computational approach, and all computational functionalities are integrated into one single channel which only requires a specified input data format. Computational functionalities of <code>CytoTree</code> can be divided into four main parts (Fig. 2.1): preprocessing, trajectory, analysis and visualization.</p>
+<ul>
+<li><p><strong>Preprocessing</strong>. Data import, compensation, quality control, filtration, normalization and merge cells from different samples can be implemented in the preprocessing part. After preprocessing, a matrix that contains clean cytometric signaling data is required to build a CYT object. There are other optional data recommended to build the CYT object, including a data frame containing meta-information of the experiment and a vector contains all markers enrolled in the computational process.</p></li>
+<li><p><strong>Trajectory</strong>. Cells built in the CYT object are classified into different clusters based on the expression level of input markers. You can choose different clustering methods by inputting different parameters. After clustering, cells are downsampled in a cluster-dependent fashion to reduce the total cell size and avoid small cluster deletion. Dimensionality reduction for both cells and clusters are also implemented in the clustering procedure. After dimensionality reduction, we use Minimus Spanning Tree (MST) to construct cell trajectory.</p></li>
+<li><p><strong>Analysis</strong>. This part is designed for time course FCS data. Before running pseudotime, root cells must be defined first based on users’ prior knowledge. Root cells in <code>CytoTree</code> workflow are the initial cells of the trajectory tree. So it can be set using one vertex node of the tree or a cluster of cells with specific antibodies combination. Intermediate state evaluation is also involved in the pseudotime part. Leaf cells are defined by the end node of the trajectory or the end stage of the experiment. Intermediate state cells are cells with higher betweenness in the graph built on cell-cell connection, which plays an important role between the connection of root cells and leaf cells.</p></li>
+<li><p><strong>Visualization</strong>. The visualization part can provide clear and concise visualization of FCS data in an effective and easy-to-comprehend manner. <code>CytoTree</code> package offers various plotting functions to generate customizable and publication-quality plots. A two-dimensional or three-dimensional plot can fit most requirements from dimensionality reduction results. And tree-based plot can visualize cell trajectory as a force-directed layout tree. Other special plots such as heatmap and violin plot are also provided in <code>CytoTree</code>.</p></li>
+</ul>
+<center>
+<img src="Figure/2.workflow.jpg" align="center" height=80% width=80%/>
+</center>
+<center>
+Figure 2.1 Workflow of CytoTree
+</center>
+</div>
+<div id="installation" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Installation</h2>
+<div id="github" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> GitHub</h3>
+<p>This requires the <code>devtools</code> package to be pre-installed first.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="quick-start.html#cb1-1" aria-hidden="true"></a><span class="co"># If not already installed</span></span>
+<span id="cb1-2"><a href="quick-start.html#cb1-2" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>) </span>
+<span id="cb1-3"><a href="quick-start.html#cb1-3" aria-hidden="true"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;JhuangLab/CytoTree&quot;</span>)</span>
+<span id="cb1-4"><a href="quick-start.html#cb1-4" aria-hidden="true"></a></span>
+<span id="cb1-5"><a href="quick-start.html#cb1-5" aria-hidden="true"></a><span class="kw">library</span>(CytoTree)</span></code></pre></div>
+<p>The link of <code>CytoTree</code> on GitHub can be visited at <a href="https://github.com/JhuangLab/CytoTree" class="uri">https://github.com/JhuangLab/CytoTree</a>.</p>
+</div>
+<div id="bioconductor" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Bioconductor</h3>
+<p>This requires the <code>BiocManager</code> package to be pre-installed first.</p>
+<p>To install this package, start R (version “4.0”) and enter:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="quick-start.html#cb2-1" aria-hidden="true"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb2-2"><a href="quick-start.html#cb2-2" aria-hidden="true"></a>    <span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span>
+<span id="cb2-3"><a href="quick-start.html#cb2-3" aria-hidden="true"></a></span>
+<span id="cb2-4"><a href="quick-start.html#cb2-4" aria-hidden="true"></a>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;CytoTree&quot;</span>)</span></code></pre></div>
+<p>The link of <code>CytoTree</code> on Bioconductor can be visited at <a href="https://bioconductor.org/packages/CytoTree/" class="uri">https://bioconductor.org/packages/CytoTree/</a>.</p>
+</div>
+</div>
+<div id="quick-start-code" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Quick-start code</h2>
+<p>To run <code>CytoTree</code>, the first step is to build a CYT object. Here are the main functions in <code>CytoTree</code>. This figure describes the available functionalities: preprocessing, trajectory, analysis, visualization, and set operations. A short description (black font) and the corresponding function (blue font) are provided for each function. The CytoTree workflow begins with the reading of the FCS data. Compensation, filtration, concatenation, and normalization are included in the preprocessing part. A clean matrix after preprocessing is required to build a CYT object, and the analysis workflows of all other functionalities are all based on the CYT object. The trajectory module contains functions used to perform clustering and dimensionality reduction for cells. The analysis module is based on calculation results from the trajectory part. The visualization part includes functions to generate publication-quality plots from the CYT object. The set operations part includes a function for subsetting a CYT object based on user-defined cells or fetching meta information for clusters and cells during the analysis.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="quick-start.html#cb3-1" aria-hidden="true"></a><span class="co"># Loading packages</span></span>
+<span id="cb3-2"><a href="quick-start.html#cb3-2" aria-hidden="true"></a><span class="kw">suppressMessages</span>({</span>
+<span id="cb3-3"><a href="quick-start.html#cb3-3" aria-hidden="true"></a><span class="kw">library</span>(CytoTree)</span>
+<span id="cb3-4"><a href="quick-start.html#cb3-4" aria-hidden="true"></a>})</span>
+<span id="cb3-5"><a href="quick-start.html#cb3-5" aria-hidden="true"></a></span>
+<span id="cb3-6"><a href="quick-start.html#cb3-6" aria-hidden="true"></a><span class="co"># Read fcs files</span></span>
+<span id="cb3-7"><a href="quick-start.html#cb3-7" aria-hidden="true"></a>fcs.path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;CytoTree&quot;</span>)</span>
+<span id="cb3-8"><a href="quick-start.html#cb3-8" aria-hidden="true"></a>fcs.files &lt;-<span class="st"> </span><span class="kw">list.files</span>(fcs.path, <span class="dt">pattern =</span> <span class="st">&#39;.FCS$&#39;</span>, <span class="dt">full =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb3-9"><a href="quick-start.html#cb3-9" aria-hidden="true"></a></span>
+<span id="cb3-10"><a href="quick-start.html#cb3-10" aria-hidden="true"></a>fcs.data &lt;-<span class="st"> </span><span class="kw">runExprsMerge</span>(fcs.files, <span class="dt">comp =</span> <span class="ot">FALSE</span>, <span class="dt">transformMethod =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb3-11"><a href="quick-start.html#cb3-11" aria-hidden="true"></a></span>
+<span id="cb3-12"><a href="quick-start.html#cb3-12" aria-hidden="true"></a><span class="co"># Build the CYT object</span></span>
+<span id="cb3-13"><a href="quick-start.html#cb3-13" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">createCYT</span>(<span class="dt">raw.data =</span> fcs.data, <span class="dt">normalization.method =</span> <span class="st">&quot;log&quot;</span>)</span>
+<span id="cb3-14"><a href="quick-start.html#cb3-14" aria-hidden="true"></a></span>
+<span id="cb3-15"><a href="quick-start.html#cb3-15" aria-hidden="true"></a><span class="co"># See information</span></span>
+<span id="cb3-16"><a href="quick-start.html#cb3-16" aria-hidden="true"></a>cyt</span></code></pre></div>
+<pre><code>## CYT Information:
+##  Input cell number: 600  cells 
+##  Enroll marker number: 18  markers 
+##  Cells after downsampling: 600  cells</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="quick-start.html#cb5-1" aria-hidden="true"></a><span class="co">################################################</span></span>
+<span id="cb5-2"><a href="quick-start.html#cb5-2" aria-hidden="true"></a><span class="co">##### Running CytoTree in one line code</span></span>
+<span id="cb5-3"><a href="quick-start.html#cb5-3" aria-hidden="true"></a><span class="co">################################################</span></span>
+<span id="cb5-4"><a href="quick-start.html#cb5-4" aria-hidden="true"></a></span>
+<span id="cb5-5"><a href="quick-start.html#cb5-5" aria-hidden="true"></a><span class="co"># Run without dimensionality reduction steps</span></span>
+<span id="cb5-6"><a href="quick-start.html#cb5-6" aria-hidden="true"></a><span class="co"># Run CytoTree as pipeline and visualize as tree</span></span>
+<span id="cb5-7"><a href="quick-start.html#cb5-7" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">buildTree</span>()</span></code></pre></div>
+<pre><code>## Mapping data to SOM</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="quick-start.html#cb7-1" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="quick-start.html#cb8-1" aria-hidden="true"></a><span class="co"># Or you can run with dimensionality reduction steps</span></span>
+<span id="cb8-2"><a href="quick-start.html#cb8-2" aria-hidden="true"></a><span class="co"># Run CytoTree as pipeline and visualize as tree</span></span>
+<span id="cb8-3"><a href="quick-start.html#cb8-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runFastPCA</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runTSNE</span>() <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">runDiffusionMap</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runUMAP</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">buildTree</span>()</span></code></pre></div>
+<pre><code>## Mapping data to SOM</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="quick-start.html#cb10-1" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>))</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-56-2.png" width="672" /></p>
+<p>Here we provied the running template of trajectory inference using CYT object is as follows:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="quick-start.html#cb11-1" aria-hidden="true"></a><span class="co"># Cluster cells by SOM algorithm</span></span>
+<span id="cb11-2"><a href="quick-start.html#cb11-2" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb11-3"><a href="quick-start.html#cb11-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runCluster</span>(cyt)</span></code></pre></div>
+<pre><code>## Mapping data to SOM</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="quick-start.html#cb13-1" aria-hidden="true"></a><span class="co"># Processing Clusters</span></span>
+<span id="cb13-2"><a href="quick-start.html#cb13-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">processingCluster</span>(cyt)</span>
+<span id="cb13-3"><a href="quick-start.html#cb13-3" aria-hidden="true"></a></span>
+<span id="cb13-4"><a href="quick-start.html#cb13-4" aria-hidden="true"></a><span class="co"># This is an optional step</span></span>
+<span id="cb13-5"><a href="quick-start.html#cb13-5" aria-hidden="true"></a><span class="co"># run Principal Component Analysis (PCA)</span></span>
+<span id="cb13-6"><a href="quick-start.html#cb13-6" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runFastPCA</span>(cyt)</span>
+<span id="cb13-7"><a href="quick-start.html#cb13-7" aria-hidden="true"></a></span>
+<span id="cb13-8"><a href="quick-start.html#cb13-8" aria-hidden="true"></a><span class="co"># This is an optional step</span></span>
+<span id="cb13-9"><a href="quick-start.html#cb13-9" aria-hidden="true"></a><span class="co"># run t-Distributed Stochastic Neighbor Embedding (tSNE)</span></span>
+<span id="cb13-10"><a href="quick-start.html#cb13-10" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runTSNE</span>(cyt)</span>
+<span id="cb13-11"><a href="quick-start.html#cb13-11" aria-hidden="true"></a></span>
+<span id="cb13-12"><a href="quick-start.html#cb13-12" aria-hidden="true"></a><span class="co"># This is an optional step</span></span>
+<span id="cb13-13"><a href="quick-start.html#cb13-13" aria-hidden="true"></a><span class="co"># run Diffusion map</span></span>
+<span id="cb13-14"><a href="quick-start.html#cb13-14" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runDiffusionMap</span>(cyt)</span>
+<span id="cb13-15"><a href="quick-start.html#cb13-15" aria-hidden="true"></a></span>
+<span id="cb13-16"><a href="quick-start.html#cb13-16" aria-hidden="true"></a><span class="co"># This is an optional step</span></span>
+<span id="cb13-17"><a href="quick-start.html#cb13-17" aria-hidden="true"></a><span class="co"># run Uniform Manifold Approximation and Projection (UMAP)</span></span>
+<span id="cb13-18"><a href="quick-start.html#cb13-18" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runUMAP</span>(cyt)</span>
+<span id="cb13-19"><a href="quick-start.html#cb13-19" aria-hidden="true"></a></span>
+<span id="cb13-20"><a href="quick-start.html#cb13-20" aria-hidden="true"></a><span class="co"># build minimum spanning tree</span></span>
+<span id="cb13-21"><a href="quick-start.html#cb13-21" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">buildTree</span>(cyt)</span>
+<span id="cb13-22"><a href="quick-start.html#cb13-22" aria-hidden="true"></a></span>
+<span id="cb13-23"><a href="quick-start.html#cb13-23" aria-hidden="true"></a><span class="co"># DEGs of different branch</span></span>
+<span id="cb13-24"><a href="quick-start.html#cb13-24" aria-hidden="true"></a>diff.list &lt;-<span class="st"> </span><span class="kw">runDiff</span>(cyt)</span>
+<span id="cb13-25"><a href="quick-start.html#cb13-25" aria-hidden="true"></a></span>
+<span id="cb13-26"><a href="quick-start.html#cb13-26" aria-hidden="true"></a><span class="co"># define root cells</span></span>
+<span id="cb13-27"><a href="quick-start.html#cb13-27" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">defRootCells</span>(cyt, <span class="dt">root.cells =</span> <span class="kw">c</span>(<span class="dv">32</span>,<span class="dv">26</span>))</span>
+<span id="cb13-28"><a href="quick-start.html#cb13-28" aria-hidden="true"></a></span>
+<span id="cb13-29"><a href="quick-start.html#cb13-29" aria-hidden="true"></a><span class="co"># run pseudotime</span></span>
+<span id="cb13-30"><a href="quick-start.html#cb13-30" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runPseudotime</span>(cyt)</span>
+<span id="cb13-31"><a href="quick-start.html#cb13-31" aria-hidden="true"></a></span>
+<span id="cb13-32"><a href="quick-start.html#cb13-32" aria-hidden="true"></a><span class="co"># define leaf cells</span></span>
+<span id="cb13-33"><a href="quick-start.html#cb13-33" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">defLeafCells</span>(cyt, <span class="dt">leaf.cells =</span> <span class="kw">c</span>(<span class="dv">30</span>))</span>
+<span id="cb13-34"><a href="quick-start.html#cb13-34" aria-hidden="true"></a></span>
+<span id="cb13-35"><a href="quick-start.html#cb13-35" aria-hidden="true"></a><span class="co"># run walk between root cells and leaf cells</span></span>
+<span id="cb13-36"><a href="quick-start.html#cb13-36" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runWalk</span>(cyt)</span>
+<span id="cb13-37"><a href="quick-start.html#cb13-37" aria-hidden="true"></a></span>
+<span id="cb13-38"><a href="quick-start.html#cb13-38" aria-hidden="true"></a><span class="co"># Save object</span></span>
+<span id="cb13-39"><a href="quick-start.html#cb13-39" aria-hidden="true"></a><span class="cf">if</span> (<span class="ot">FALSE</span>) {</span>
+<span id="cb13-40"><a href="quick-start.html#cb13-40" aria-hidden="true"></a>  <span class="kw">saveRDS</span>(cyt, <span class="dt">file =</span> <span class="st">&quot;Path to you output directory&quot;</span>)</span>
+<span id="cb13-41"><a href="quick-start.html#cb13-41" aria-hidden="true"></a>}</span></code></pre></div>
+</div>
+<div id="visualization" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Visualization</h2>
+<p>The running template of visualization is as follows:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="quick-start.html#cb14-1" aria-hidden="true"></a><span class="co"># Plot 2D tSNE. And cells are colored by cluster id</span></span>
+<span id="cb14-2"><a href="quick-start.html#cb14-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;cluster.id&quot;</span>, </span>
+<span id="cb14-3"><a href="quick-start.html#cb14-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;tSNE&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="quick-start.html#cb15-1" aria-hidden="true"></a><span class="co"># Plot 2D UMAP. And cells are colored by cluster id</span></span>
+<span id="cb15-2"><a href="quick-start.html#cb15-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;cluster.id&quot;</span>, </span>
+<span id="cb15-3"><a href="quick-start.html#cb15-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;UMAP&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="quick-start.html#cb16-1" aria-hidden="true"></a><span class="co"># Plot 2D tSNE. And cells are colored by cluster id</span></span>
+<span id="cb16-2"><a href="quick-start.html#cb16-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;branch.id&quot;</span>, </span>
+<span id="cb16-3"><a href="quick-start.html#cb16-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;tSNE&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-3.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="quick-start.html#cb17-1" aria-hidden="true"></a><span class="co"># Plot 2D UMAP. And cells are colored by cluster id</span></span>
+<span id="cb17-2"><a href="quick-start.html#cb17-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;branch.id&quot;</span>, </span>
+<span id="cb17-3"><a href="quick-start.html#cb17-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;UMAP&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-4.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="quick-start.html#cb18-1" aria-hidden="true"></a><span class="co"># Plot 2D tSNE. And cells are colored by stage</span></span>
+<span id="cb18-2"><a href="quick-start.html#cb18-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;stage&quot;</span>, </span>
+<span id="cb18-3"><a href="quick-start.html#cb18-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;UMAP&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-5.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="quick-start.html#cb19-1" aria-hidden="true"></a><span class="co"># Plot 2D UMAP. And cells are colored by stage</span></span>
+<span id="cb19-2"><a href="quick-start.html#cb19-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;stage&quot;</span>, </span>
+<span id="cb19-3"><a href="quick-start.html#cb19-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;UMAP&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-6.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="quick-start.html#cb20-1" aria-hidden="true"></a><span class="co"># Tree plot</span></span>
+<span id="cb20-2"><a href="quick-start.html#cb20-2" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;D0.percent&quot;</span>, <span class="dt">show.node.name =</span> <span class="ot">TRUE</span>, <span class="dt">cex.size =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-7.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="quick-start.html#cb21-1" aria-hidden="true"></a><span class="co"># Tree plot</span></span>
+<span id="cb21-2"><a href="quick-start.html#cb21-2" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;FITC-A&lt;CD43&gt;&quot;</span>, <span class="dt">show.node.name =</span> <span class="ot">TRUE</span>, <span class="dt">cex.size =</span> <span class="dv">1</span>) </span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-8.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="quick-start.html#cb22-1" aria-hidden="true"></a><span class="co"># plot clusters</span></span>
+<span id="cb22-2"><a href="quick-start.html#cb22-2" aria-hidden="true"></a><span class="kw">plotCluster</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>,</span>
+<span id="cb22-3"><a href="quick-start.html#cb22-3" aria-hidden="true"></a>            <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">color.by =</span> <span class="st">&quot;BV510-A&lt;CD45RA&gt;&quot;</span>) </span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-9.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="quick-start.html#cb23-1" aria-hidden="true"></a><span class="co"># plot pie tree</span></span>
+<span id="cb23-2"><a href="quick-start.html#cb23-2" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt, <span class="dt">cex.size =</span> <span class="dv">3</span>, <span class="dt">size.by.cell.number =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-10.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="quick-start.html#cb24-1" aria-hidden="true"></a><span class="co"># plot pie cluster</span></span>
+<span id="cb24-2"><a href="quick-start.html#cb24-2" aria-hidden="true"></a><span class="kw">plotPieCluster</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">cex.size =</span> <span class="dv">40</span>) </span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-11.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="quick-start.html#cb25-1" aria-hidden="true"></a><span class="co"># plot heatmap of clusters</span></span>
+<span id="cb25-2"><a href="quick-start.html#cb25-2" aria-hidden="true"></a><span class="kw">plotClusterHeatmap</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-12.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="quick-start.html#cb26-1" aria-hidden="true"></a><span class="co"># plot heatmap of branches</span></span>
+<span id="cb26-2"><a href="quick-start.html#cb26-2" aria-hidden="true"></a><span class="kw">plotBranchHeatmap</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-13.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="quick-start.html#cb27-1" aria-hidden="true"></a><span class="co"># Violin plot</span></span>
+<span id="cb27-2"><a href="quick-start.html#cb27-2" aria-hidden="true"></a><span class="kw">plotViolin</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;cluster.id&quot;</span>, <span class="dt">marker =</span> <span class="st">&quot;BV510-A&lt;CD45RA&gt;&quot;</span>, <span class="dt">text.angle =</span> <span class="dv">90</span>)</span></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-14.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="quick-start.html#cb29-1" aria-hidden="true"></a><span class="co"># Violin plot</span></span>
+<span id="cb29-2"><a href="quick-start.html#cb29-2" aria-hidden="true"></a><span class="kw">plotViolin</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;branch.id&quot;</span>, <span class="dt">marker =</span> <span class="st">&quot;BV510-A&lt;CD45RA&gt;&quot;</span>, <span class="dt">text.angle =</span> <span class="dv">90</span>)</span></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-15.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="quick-start.html#cb31-1" aria-hidden="true"></a><span class="co"># UMAP plot colored by pseudotime</span></span>
+<span id="cb31-2"><a href="quick-start.html#cb31-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>), <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>,</span>
+<span id="cb31-3"><a href="quick-start.html#cb31-3" aria-hidden="true"></a>            <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">color.by =</span> <span class="st">&quot;pseudotime&quot;</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-16.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="quick-start.html#cb32-1" aria-hidden="true"></a><span class="co"># tSNE plot colored by pseudotime</span></span>
+<span id="cb32-2"><a href="quick-start.html#cb32-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>,</span>
+<span id="cb32-3"><a href="quick-start.html#cb32-3" aria-hidden="true"></a>            <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">color.by =</span> <span class="st">&quot;pseudotime&quot;</span>) </span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-17.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="quick-start.html#cb33-1" aria-hidden="true"></a><span class="co"># denisty plot by different stage</span></span>
+<span id="cb33-2"><a href="quick-start.html#cb33-2" aria-hidden="true"></a><span class="kw">plotPseudotimeDensity</span>(cyt, <span class="dt">adjust =</span> <span class="dv">1</span>) </span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-18.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="quick-start.html#cb34-1" aria-hidden="true"></a><span class="co"># Tree plot</span></span>
+<span id="cb34-2"><a href="quick-start.html#cb34-2" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;pseudotime&quot;</span>, <span class="dt">cex.size =</span> <span class="fl">1.5</span>) </span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-19.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="quick-start.html#cb35-1" aria-hidden="true"></a><span class="co"># Violin plot</span></span>
+<span id="cb35-2"><a href="quick-start.html#cb35-2" aria-hidden="true"></a><span class="kw">plotViolin</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;cluster.id&quot;</span>, <span class="dt">order.by =</span> <span class="st">&quot;pseudotime&quot;</span>,</span>
+<span id="cb35-3"><a href="quick-start.html#cb35-3" aria-hidden="true"></a>           <span class="dt">marker =</span> <span class="st">&quot;BV650-A&lt;CD49f&gt;&quot;</span>, <span class="dt">text.angle =</span> <span class="dv">90</span>)</span></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-20.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="quick-start.html#cb37-1" aria-hidden="true"></a><span class="co"># trajectory value</span></span>
+<span id="cb37-2"><a href="quick-start.html#cb37-2" aria-hidden="true"></a><span class="kw">plotPseudotimeTraj</span>(cyt, <span class="dt">var.cols =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-21.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="quick-start.html#cb39-1" aria-hidden="true"></a><span class="co"># Heatmap plot</span></span>
+<span id="cb39-2"><a href="quick-start.html#cb39-2" aria-hidden="true"></a><span class="kw">plotHeatmap</span>(cyt, <span class="dt">downsize =</span> <span class="dv">1000</span>, <span class="dt">cluster_rows =</span> <span class="ot">TRUE</span>, <span class="dt">clustering_method =</span> <span class="st">&quot;ward.D&quot;</span>,</span>
+<span id="cb39-3"><a href="quick-start.html#cb39-3" aria-hidden="true"></a>            <span class="dt">color =</span> <span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))(<span class="dv">100</span>))</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-22.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="quick-start.html#cb40-1" aria-hidden="true"></a><span class="co"># plot cluster</span></span>
+<span id="cb40-2"><a href="quick-start.html#cb40-2" aria-hidden="true"></a><span class="kw">plotCluster</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;traj.value.log&quot;</span>, </span>
+<span id="cb40-3"><a href="quick-start.html#cb40-3" aria-hidden="true"></a>            <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>) </span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-58-23.png" width="50%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ti.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
