@@ -12,9 +12,9 @@ preprocessing
 preprocessing-using-flowcore
 preprocessing-using-cytotree
 clustering
-dimenssionality-reduction
+dimensionality-reduction
 build-trajectory
-optimazation
+optimization
 analysis
 pseudotime
 intermediate-states

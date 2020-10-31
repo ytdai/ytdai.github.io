@@ -24,7 +24,7 @@
 <meta name="author" content="Yuting Dai" />
 
 
-<meta name="date" content="2020-10-31" />
+<meta name="date" content="2020-11-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="ti.html"><a href="ti.html#preprocessing-using-cytotree"><i class="fa fa-check"></i><b>3.1.2</b> Preprocessing using <code>CytoTree</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="ti.html"><a href="ti.html#clustering"><i class="fa fa-check"></i><b>3.2</b> Clustering</a></li>
-<li class="chapter" data-level="3.3" data-path="ti.html"><a href="ti.html#dimenssionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Dimenssionality Reduction</a></li>
+<li class="chapter" data-level="3.3" data-path="ti.html"><a href="ti.html#dimensionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Dimensionality Reduction</a></li>
 <li class="chapter" data-level="3.4" data-path="ti.html"><a href="ti.html#build-trajectory"><i class="fa fa-check"></i><b>3.4</b> Build Trajectory</a></li>
-<li class="chapter" data-level="3.5" data-path="ti.html"><a href="ti.html#optimazation"><i class="fa fa-check"></i><b>3.5</b> Optimazation</a></li>
+<li class="chapter" data-level="3.5" data-path="ti.html"><a href="ti.html#optimization"><i class="fa fa-check"></i><b>3.5</b> Optimization</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis of TI</a>
 <ul>
@@ -177,11 +177,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#bug-reports"><i class="fa fa-check"></i>Bug Reports</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#current-version"><i class="fa fa-check"></i>Current version</a></li>
-<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#acknowledgement"><i class="fa fa-check"></i>Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#acknowledgment"><i class="fa fa-check"></i>Acknowledgment</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#session-information"><i class="fa fa-check"></i>Session Information</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#about-the-author"><i class="fa fa-check"></i>About The Author</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About The Author</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -203,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="advanced-usage" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Advanced Usage</h1>
-<p>First, we build a CYT object with data in the extend data of <code>CytoTree</code> and build the tree-shaped trajectory.</p>
+<p>First, we build a CYT object with data in the extended data of <code>CytoTree</code> and build the tree-shaped trajectory.</p>
 <div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="advanced-usage.html#cb156-1" aria-hidden="true"></a><span class="co"># Loading packages</span></span>
 <span id="cb156-2"><a href="advanced-usage.html#cb156-2" aria-hidden="true"></a><span class="kw">suppressMessages</span>({</span>
 <span id="cb156-3"><a href="advanced-usage.html#cb156-3" aria-hidden="true"></a><span class="kw">library</span>(CytoTree)</span>
@@ -232,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb156-26"><a href="advanced-usage.html#cb156-26" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runFastPCA</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runTSNE</span>() <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">runDiffusionMap</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runUMAP</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">buildTree</span>()</span></code></pre></div>
 <pre><code>## Mapping data to SOM</code></pre>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="advanced-usage.html#cb158-1" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-85-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-32-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p>The first advanced usage is to fetch plot meta information of <code>CytoTree</code>.</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="advanced-usage.html#cb159-1" aria-hidden="true"></a><span class="co"># Fetching plot meta information for each cell</span></span>
 <span id="cb159-2"><a href="advanced-usage.html#cb159-2" aria-hidden="true"></a>plot.meta &lt;-<span class="st"> </span><span class="kw">fetchPlotMeta</span>(cyt)</span>
@@ -254,12 +254,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb160-6"><a href="advanced-usage.html#cb160-6" aria-hidden="true"></a><span class="co"># Change stage </span></span>
 <span id="cb160-7"><a href="advanced-usage.html#cb160-7" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">addMetaData</span>(cyt, <span class="dt">meta.info =</span> meta.information, <span class="dt">name =</span> <span class="st">&quot;stage&quot;</span>)</span>
 <span id="cb160-8"><a href="advanced-usage.html#cb160-8" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-87-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-34-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="advanced-usage.html#cb161-1" aria-hidden="true"></a><span class="co"># Run PCA and view cell information as our new column</span></span>
 <span id="cb161-2"><a href="advanced-usage.html#cb161-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runFastPCA</span>(cyt)</span>
 <span id="cb161-3"><a href="advanced-usage.html#cb161-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">addMetaData</span>(cyt, <span class="dt">meta.info =</span> meta.information, <span class="dt">name =</span> <span class="st">&quot;Mycol&quot;</span>)</span>
 <span id="cb161-4"><a href="advanced-usage.html#cb161-4" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;Mycol&quot;</span>, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;PC_1&quot;</span>, <span class="st">&quot;PC_2&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-87-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-34-2.png" width="50%" style="display: block; margin: auto;" /></p>
 
 </div>
             </section>

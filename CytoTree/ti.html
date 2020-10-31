@@ -24,7 +24,7 @@
 <meta name="author" content="Yuting Dai" />
 
 
-<meta name="date" content="2020-10-31" />
+<meta name="date" content="2020-11-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="ti.html"><a href="ti.html#preprocessing-using-cytotree"><i class="fa fa-check"></i><b>3.1.2</b> Preprocessing using <code>CytoTree</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="ti.html"><a href="ti.html#clustering"><i class="fa fa-check"></i><b>3.2</b> Clustering</a></li>
-<li class="chapter" data-level="3.3" data-path="ti.html"><a href="ti.html#dimenssionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Dimenssionality Reduction</a></li>
+<li class="chapter" data-level="3.3" data-path="ti.html"><a href="ti.html#dimensionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Dimensionality Reduction</a></li>
 <li class="chapter" data-level="3.4" data-path="ti.html"><a href="ti.html#build-trajectory"><i class="fa fa-check"></i><b>3.4</b> Build Trajectory</a></li>
-<li class="chapter" data-level="3.5" data-path="ti.html"><a href="ti.html#optimazation"><i class="fa fa-check"></i><b>3.5</b> Optimazation</a></li>
+<li class="chapter" data-level="3.5" data-path="ti.html"><a href="ti.html#optimization"><i class="fa fa-check"></i><b>3.5</b> Optimization</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis of TI</a>
 <ul>
@@ -177,11 +177,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#bug-reports"><i class="fa fa-check"></i>Bug Reports</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#current-version"><i class="fa fa-check"></i>Current version</a></li>
-<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#acknowledgement"><i class="fa fa-check"></i>Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#acknowledgment"><i class="fa fa-check"></i>Acknowledgment</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#session-information"><i class="fa fa-check"></i>Session Information</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#about-the-author"><i class="fa fa-check"></i>About The Author</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About The Author</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -272,7 +272,7 @@ And through this chapter, you will learn:</p>
 <span id="cb41-38"><a href="ti.html#cb41-38" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;Raw FCS data&quot;</span>, </span>
 <span id="cb41-39"><a href="ti.html#cb41-39" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;FSC-A&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;SSC-A&quot;</span>,</span>
 <span id="cb41-40"><a href="ti.html#cb41-40" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="ti.html#cb42-1" aria-hidden="true"></a>fcs.exp &lt;-<span class="st"> </span>fcs.exp[<span class="kw">which</span>((fcs.exp[, <span class="st">&quot;FSC-A&quot;</span>] <span class="op">&gt;</span><span class="st"> </span><span class="fl">7E4</span>) <span class="op">&amp;</span><span class="st"> </span>(fcs.exp[, <span class="st">&quot;FSC-A&quot;</span>] <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.8E5</span>)), ]</span>
 <span id="cb42-2"><a href="ti.html#cb42-2" aria-hidden="true"></a>fcs.exp &lt;-<span class="st"> </span>fcs.exp[<span class="kw">which</span>((fcs.exp[, <span class="st">&quot;SSC-A&quot;</span>] <span class="op">&gt;</span><span class="st"> </span><span class="fl">3E4</span>) <span class="op">&amp;</span><span class="st"> </span>(fcs.exp[, <span class="st">&quot;SSC-A&quot;</span>] <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.5E5</span>)), ]</span>
 <span id="cb42-3"><a href="ti.html#cb42-3" aria-hidden="true"></a></span>
@@ -281,14 +281,14 @@ And through this chapter, you will learn:</p>
 <span id="cb42-6"><a href="ti.html#cb42-6" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;Filtered by FSC-A and SSC-A&quot;</span>,</span>
 <span id="cb42-7"><a href="ti.html#cb42-7" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;FSC-A&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;SSC-A&quot;</span>,</span>
 <span id="cb42-8"><a href="ti.html#cb42-8" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-2.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="ti.html#cb43-1" aria-hidden="true"></a><span class="co"># Plot by FSC-H and FSC-W</span></span>
 <span id="cb43-2"><a href="ti.html#cb43-2" aria-hidden="true"></a><span class="kw">heatscatter</span>(fcs.exp[, <span class="st">&quot;FSC-H&quot;</span>], </span>
 <span id="cb43-3"><a href="ti.html#cb43-3" aria-hidden="true"></a>            fcs.exp[, <span class="st">&quot;FSC-W&quot;</span>],</span>
 <span id="cb43-4"><a href="ti.html#cb43-4" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;Filtered by FSC-A and SSC-A&quot;</span>,</span>
 <span id="cb43-5"><a href="ti.html#cb43-5" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;FSC-H&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;FSC-W&quot;</span>,</span>
 <span id="cb43-6"><a href="ti.html#cb43-6" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-3.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-3.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="ti.html#cb44-1" aria-hidden="true"></a>fcs.exp &lt;-<span class="st"> </span>fcs.exp[<span class="kw">which</span>((fcs.exp[, <span class="st">&quot;FSC-H&quot;</span>] <span class="op">&gt;</span><span class="st"> </span><span class="fl">4E4</span>) <span class="op">&amp;</span><span class="st"> </span>(fcs.exp[, <span class="st">&quot;FSC-H&quot;</span>] <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.2E5</span>)), ]</span>
 <span id="cb44-2"><a href="ti.html#cb44-2" aria-hidden="true"></a>fcs.exp &lt;-<span class="st"> </span>fcs.exp[<span class="kw">which</span>((fcs.exp[, <span class="st">&quot;FSC-W&quot;</span>] <span class="op">&gt;</span><span class="st"> </span><span class="fl">6E4</span>) <span class="op">&amp;</span><span class="st"> </span>(fcs.exp[, <span class="st">&quot;FSC-W&quot;</span>] <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.2E5</span>)), ]</span>
 <span id="cb44-3"><a href="ti.html#cb44-3" aria-hidden="true"></a></span>
@@ -298,14 +298,14 @@ And through this chapter, you will learn:</p>
 <span id="cb44-7"><a href="ti.html#cb44-7" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;Filtered by FSC-H and FSC-W&quot;</span>,</span>
 <span id="cb44-8"><a href="ti.html#cb44-8" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;FSC-H&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;FSC-W&quot;</span>,</span>
 <span id="cb44-9"><a href="ti.html#cb44-9" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-4.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-4.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="ti.html#cb45-1" aria-hidden="true"></a><span class="co"># Plot by SSC-H and SSC-w</span></span>
 <span id="cb45-2"><a href="ti.html#cb45-2" aria-hidden="true"></a><span class="kw">heatscatter</span>(fcs.exp[, <span class="st">&quot;SSC-H&quot;</span>], </span>
 <span id="cb45-3"><a href="ti.html#cb45-3" aria-hidden="true"></a>            fcs.exp[, <span class="st">&quot;SSC-W&quot;</span>],</span>
 <span id="cb45-4"><a href="ti.html#cb45-4" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;Filtered by FSC-H and FSC-W&quot;</span>,</span>
 <span id="cb45-5"><a href="ti.html#cb45-5" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;SSC-H&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;SSC-W&quot;</span>,</span>
 <span id="cb45-6"><a href="ti.html#cb45-6" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-5.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-5.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="ti.html#cb46-1" aria-hidden="true"></a>fcs.exp &lt;-<span class="st"> </span>fcs.exp[<span class="kw">which</span>((fcs.exp[, <span class="st">&quot;SSC-H&quot;</span>] <span class="op">&gt;</span><span class="st"> </span><span class="fl">2E4</span>) <span class="op">&amp;</span><span class="st"> </span>(fcs.exp[, <span class="st">&quot;SSC-H&quot;</span>] <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.2E5</span>)), ]</span>
 <span id="cb46-2"><a href="ti.html#cb46-2" aria-hidden="true"></a>fcs.exp &lt;-<span class="st"> </span>fcs.exp[<span class="kw">which</span>((fcs.exp[, <span class="st">&quot;SSC-W&quot;</span>] <span class="op">&gt;</span><span class="st"> </span><span class="fl">6E4</span>) <span class="op">&amp;</span><span class="st"> </span>(fcs.exp[, <span class="st">&quot;SSC-W&quot;</span>] <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.1E5</span>)), ]</span>
 <span id="cb46-3"><a href="ti.html#cb46-3" aria-hidden="true"></a></span>
@@ -315,28 +315,28 @@ And through this chapter, you will learn:</p>
 <span id="cb46-7"><a href="ti.html#cb46-7" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;Filtered by SSC-H and SSC-W&quot;</span>,</span>
 <span id="cb46-8"><a href="ti.html#cb46-8" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;SSC-H&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;SSC-W&quot;</span>,</span>
 <span id="cb46-9"><a href="ti.html#cb46-9" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">2.5E5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-6.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-6.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="ti.html#cb47-1" aria-hidden="true"></a><span class="co"># Plot by CD43 and CD31</span></span>
 <span id="cb47-2"><a href="ti.html#cb47-2" aria-hidden="true"></a><span class="kw">heatscatter</span>(<span class="kw">log10</span>(<span class="kw">abs</span>(fcs.exp[, <span class="st">&quot;FITC-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>), </span>
 <span id="cb47-3"><a href="ti.html#cb47-3" aria-hidden="true"></a>            <span class="kw">log10</span>(<span class="kw">abs</span>(fcs.exp[, <span class="st">&quot;BV605-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>),</span>
 <span id="cb47-4"><a href="ti.html#cb47-4" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;After gating&quot;</span>, </span>
 <span id="cb47-5"><a href="ti.html#cb47-5" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;CD43&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;CD31&quot;</span>,</span>
 <span id="cb47-6"><a href="ti.html#cb47-6" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-7.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-7.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ti.html#cb48-1" aria-hidden="true"></a><span class="co"># Plot by CD43 and CD31</span></span>
 <span id="cb48-2"><a href="ti.html#cb48-2" aria-hidden="true"></a><span class="kw">heatscatter</span>(<span class="kw">log10</span>(<span class="kw">abs</span>(fcs.exp[, <span class="st">&quot;APC-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>), </span>
 <span id="cb48-3"><a href="ti.html#cb48-3" aria-hidden="true"></a>            <span class="kw">log10</span>(<span class="kw">abs</span>(fcs.exp[, <span class="st">&quot;BV650-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>),</span>
 <span id="cb48-4"><a href="ti.html#cb48-4" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;After gating&quot;</span>, </span>
 <span id="cb48-5"><a href="ti.html#cb48-5" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;CD34&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;CD49f&quot;</span>,</span>
 <span id="cb48-6"><a href="ti.html#cb48-6" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-8.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-8.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="ti.html#cb49-1" aria-hidden="true"></a><span class="co"># Plot by CD43 and CD31</span></span>
 <span id="cb49-2"><a href="ti.html#cb49-2" aria-hidden="true"></a><span class="kw">heatscatter</span>(<span class="kw">log10</span>(<span class="kw">abs</span>(fcs.exp[, <span class="st">&quot;PE-Cy7-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>), </span>
 <span id="cb49-3"><a href="ti.html#cb49-3" aria-hidden="true"></a>            <span class="kw">log10</span>(<span class="kw">abs</span>(fcs.exp[, <span class="st">&quot;BV421-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>),</span>
 <span id="cb49-4"><a href="ti.html#cb49-4" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;After gating&quot;</span>, </span>
 <span id="cb49-5"><a href="ti.html#cb49-5" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;CD38&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;CD90&quot;</span>,</span>
 <span id="cb49-6"><a href="ti.html#cb49-6" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-59-9.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-6-9.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="ti.html#cb50-1" aria-hidden="true"></a><span class="co"># Output FCS file</span></span>
 <span id="cb50-2"><a href="ti.html#cb50-2" aria-hidden="true"></a>fcs.data<span class="op">@</span>exprs &lt;-<span class="st"> </span>fcs.exp</span>
 <span id="cb50-3"><a href="ti.html#cb50-3" aria-hidden="true"></a>flowCore<span class="op">::</span><span class="kw">write.FCS</span>(fcs.data, <span class="dt">filename =</span> <span class="st">&quot;FCS/basic/D10.fcs&quot;</span>)</span></code></pre></div>
@@ -398,7 +398,7 @@ Then you can use <code>heatscatter</code> to plot the cytometry data and define 
 <span id="cb56-3"><a href="ti.html#cb56-3" aria-hidden="true"></a>            cyt.data[, <span class="st">&quot;SSC-A&quot;</span>],</span>
 <span id="cb56-4"><a href="ti.html#cb56-4" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;Raw FCS data&quot;</span>, </span>
 <span id="cb56-5"><a href="ti.html#cb56-5" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;FSC-A&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;SSC-A&quot;</span>)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-60-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-7-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="ti.html#cb57-1" aria-hidden="true"></a><span class="co">###########################################</span></span>
 <span id="cb57-2"><a href="ti.html#cb57-2" aria-hidden="true"></a><span class="co">#   Gating</span></span>
 <span id="cb57-3"><a href="ti.html#cb57-3" aria-hidden="true"></a><span class="co">###########################################</span></span>
@@ -418,21 +418,21 @@ Then you can use <code>heatscatter</code> to plot the cytometry data and define 
 <span id="cb57-17"><a href="ti.html#cb57-17" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;After gating&quot;</span>, </span>
 <span id="cb57-18"><a href="ti.html#cb57-18" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;CD43&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;CD31&quot;</span>,</span>
 <span id="cb57-19"><a href="ti.html#cb57-19" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-60-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-7-2.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ti.html#cb58-1" aria-hidden="true"></a><span class="co"># Plot by CD43 and CD31</span></span>
 <span id="cb58-2"><a href="ti.html#cb58-2" aria-hidden="true"></a><span class="kw">heatscatter</span>(<span class="kw">log10</span>(<span class="kw">abs</span>(cyt.data.gating[, <span class="st">&quot;APC-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>), </span>
 <span id="cb58-3"><a href="ti.html#cb58-3" aria-hidden="true"></a>            <span class="kw">log10</span>(<span class="kw">abs</span>(cyt.data.gating[, <span class="st">&quot;BV650-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>),</span>
 <span id="cb58-4"><a href="ti.html#cb58-4" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;After gating&quot;</span>, </span>
 <span id="cb58-5"><a href="ti.html#cb58-5" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;CD34&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;CD49f&quot;</span>,</span>
 <span id="cb58-6"><a href="ti.html#cb58-6" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-60-3.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-7-3.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="ti.html#cb59-1" aria-hidden="true"></a><span class="co"># Plot by CD43 and CD31</span></span>
 <span id="cb59-2"><a href="ti.html#cb59-2" aria-hidden="true"></a><span class="kw">heatscatter</span>(<span class="kw">log10</span>(<span class="kw">abs</span>(cyt.data.gating[, <span class="st">&quot;PE-Cy7-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>), </span>
 <span id="cb59-3"><a href="ti.html#cb59-3" aria-hidden="true"></a>            <span class="kw">log10</span>(<span class="kw">abs</span>(cyt.data.gating[, <span class="st">&quot;BV421-A&quot;</span>])<span class="op">+</span><span class="dv">1</span>),</span>
 <span id="cb59-4"><a href="ti.html#cb59-4" aria-hidden="true"></a>            <span class="dt">cexplot =</span> <span class="fl">0.3</span>, <span class="dt">main =</span> <span class="st">&quot;After gating&quot;</span>, </span>
 <span id="cb59-5"><a href="ti.html#cb59-5" aria-hidden="true"></a>            <span class="dt">xlab =</span> <span class="st">&quot;CD38&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;CD90&quot;</span>,</span>
 <span id="cb59-6"><a href="ti.html#cb59-6" aria-hidden="true"></a>            <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-60-4.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-7-4.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="ti.html#cb60-1" aria-hidden="true"></a><span class="co"># Show marker description in each panel</span></span>
 <span id="cb60-2"><a href="ti.html#cb60-2" aria-hidden="true"></a><span class="co"># We highly recommend this step.</span></span>
 <span id="cb60-3"><a href="ti.html#cb60-3" aria-hidden="true"></a>recol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">`</span><span class="dt">FITC-A</span><span class="st">`</span> =<span class="st"> &quot;CD43&quot;</span>, <span class="st">`</span><span class="dt">APC-A</span><span class="st">`</span> =<span class="st"> &quot;CD34&quot;</span>, </span>
@@ -514,7 +514,7 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb66-9"><a href="ti.html#cb66-9" aria-hidden="true"></a><span class="co"># Visualization for cluster</span></span>
 <span id="cb66-10"><a href="ti.html#cb66-10" aria-hidden="true"></a><span class="kw">plotCluster</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>,</span>
 <span id="cb66-11"><a href="ti.html#cb66-11" aria-hidden="true"></a>            <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-62-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-9-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p>Clustering using SOM alogrithm. You can use <code>?runSOM</code> to see more detailed information. The function <code>runSOM(cyt, xdim = 10, ydim = 10)</code> is equal to <code>runCluster(cyt, cluster.method = "som", xdim = 10, ydim = 10)</code>.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="ti.html#cb67-1" aria-hidden="true"></a><span class="co"># You can set xdim and ydim to specify the number of clusters</span></span>
 <span id="cb67-2"><a href="ti.html#cb67-2" aria-hidden="true"></a><span class="co"># the cluster number is xdim * ydim</span></span>
@@ -527,8 +527,8 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb69-4"><a href="ti.html#cb69-4" aria-hidden="true"></a><span class="co"># Visualization for clusters</span></span>
 <span id="cb69-5"><a href="ti.html#cb69-5" aria-hidden="true"></a><span class="kw">plotCluster</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>,</span>
 <span id="cb69-6"><a href="ti.html#cb69-6" aria-hidden="true"></a>            <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-63-1.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>Clustering using Kmeans alogrithm. You can use <code>?runKmeans</code> to see more detailed information.</p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-10-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Clustering using Kmeans algorithm. You can use <code>?runKmeans</code> to see more detailed information.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="ti.html#cb70-1" aria-hidden="true"></a><span class="co"># Kmeans cluster, you can set k to specify the number of clusters</span></span>
 <span id="cb70-2"><a href="ti.html#cb70-2" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb70-3"><a href="ti.html#cb70-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runCluster</span>(cyt, <span class="dt">cluster.method =</span> <span class="st">&quot;kmeans&quot;</span>, <span class="dt">k =</span> <span class="dv">100</span>)</span></code></pre></div>
@@ -539,8 +539,8 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb72-4"><a href="ti.html#cb72-4" aria-hidden="true"></a><span class="co"># Visualization for cluster</span></span>
 <span id="cb72-5"><a href="ti.html#cb72-5" aria-hidden="true"></a><span class="kw">plotCluster</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>,</span>
 <span id="cb72-6"><a href="ti.html#cb72-6" aria-hidden="true"></a>            <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-64-1.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>Clustering using Clara alogrithm. You can use <code>?runClara</code> to see more detailed information.</p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Clustering using Clara algorithm. You can use <code>?runClara</code> to see more detailed information.</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="ti.html#cb73-1" aria-hidden="true"></a><span class="co"># Clara cluster, you can set k to specify the number of clusters</span></span>
 <span id="cb73-2"><a href="ti.html#cb73-2" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb73-3"><a href="ti.html#cb73-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runCluster</span>(cyt, <span class="dt">cluster.method =</span> <span class="st">&quot;clara&quot;</span>, <span class="dt">k =</span> <span class="dv">100</span>)</span>
@@ -551,8 +551,8 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb73-8"><a href="ti.html#cb73-8" aria-hidden="true"></a><span class="co"># Visualization for clusters</span></span>
 <span id="cb73-9"><a href="ti.html#cb73-9" aria-hidden="true"></a><span class="kw">plotCluster</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>,</span>
 <span id="cb73-10"><a href="ti.html#cb73-10" aria-hidden="true"></a>            <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">show.cluser.id =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-65-1.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>Clustering using Hclust and phenoGraph algorithm. You can use <code>?runHclust</code> or <code>?runPhenograph</code> to see more detailed information. These two methods will take a relatively long time. So for data with a large cell size, we do not recommend these two methods.</p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-12-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Clustering using Hclust and phenoGraph algorithm. You can use <code>?runHclust</code> or <code>?runPhenograph</code> to see more detailed information. These two methods will take a relatively long time. So for data with large cell size, we do not recommend these two methods.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="ti.html#cb74-1" aria-hidden="true"></a><span class="co"># Hclust cluster, you can set k to specify the number of clusters</span></span>
 <span id="cb74-2"><a href="ti.html#cb74-2" aria-hidden="true"></a><span class="co"># Hclust runs only the cell number is less than 50,000. </span></span>
 <span id="cb74-3"><a href="ti.html#cb74-3" aria-hidden="true"></a><span class="co"># Or it will take lots of time</span></span>
@@ -569,8 +569,8 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb74-14"><a href="ti.html#cb74-14" aria-hidden="true"></a>  cyt &lt;-<span class="st"> </span><span class="kw">runCluster</span>(cyt, <span class="dt">cluster.method =</span> <span class="st">&quot;phenograph&quot;</span>)</span>
 <span id="cb74-15"><a href="ti.html#cb74-15" aria-hidden="true"></a>}</span></code></pre></div>
 </div>
-<div id="dimenssionality-reduction" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Dimenssionality Reduction</h2>
+<div id="dimensionality-reduction" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Dimensionality Reduction</h2>
 <p>Four methods are provided in the dimensionality reduction module: PCA, tSNE, diffusion maps and UMAP. These methods can be implemented separately by <code>CytoTree::runFastPCA</code>, <code>CytoTree::runTSNE</code>, <code>CytoTree::runDiffusionMaps</code> and <code>CytoTree::runUMAP</code>. The linear and nonlinear dimensionality reduction techniques were developed for the analysis of any type of multidimensional data and enable us to visualize it in two or three dimensions. These methods are relatively independent and can be called by different functions in CytoTree. Also, these functions are optional steps.</p>
 <p>First, we will change the clustering method to SOM.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="ti.html#cb75-1" aria-hidden="true"></a><span class="co"># By default is som, so we change the clustering method to som</span></span>
@@ -586,10 +586,10 @@ The related function names of these clustering methods were <code>runSOM</code>,
 ##  Input cell number: 236187  cells 
 ##  Enroll marker number: 13  markers 
 ##  Cells after downsampling: 23662  cells</code></pre>
-<p>Perfroming dimensionality reduction.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="ti.html#cb79-1" aria-hidden="true"></a><span class="co"># Four popular dimensionality reduction method are integrated </span></span>
+<p>Performing dimensionality reduction.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="ti.html#cb79-1" aria-hidden="true"></a><span class="co"># Four popular dimensionality reduction methods are integrated </span></span>
 <span id="cb79-2"><a href="ti.html#cb79-2" aria-hidden="true"></a><span class="co"># in CytoTree, namely PCA, tSNE, diffusion maps and UMAP.</span></span>
-<span id="cb79-3"><a href="ti.html#cb79-3" aria-hidden="true"></a><span class="co"># This four steps are optional steps</span></span>
+<span id="cb79-3"><a href="ti.html#cb79-3" aria-hidden="true"></a><span class="co"># These four steps are optional steps</span></span>
 <span id="cb79-4"><a href="ti.html#cb79-4" aria-hidden="true"></a></span>
 <span id="cb79-5"><a href="ti.html#cb79-5" aria-hidden="true"></a><span class="co"># run Principal Component Analysis (PCA)</span></span>
 <span id="cb79-6"><a href="ti.html#cb79-6" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runFastPCA</span>(cyt)</span>
@@ -612,46 +612,46 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb80-6"><a href="ti.html#cb80-6" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;PC_1&quot;</span>, <span class="st">&quot;PC_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, </span>
 <span id="cb80-7"><a href="ti.html#cb80-7" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;PCA&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb80-8"><a href="ti.html#cb80-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="ti.html#cb81-1" aria-hidden="true"></a><span class="co"># 2D plot</span></span>
 <span id="cb81-2"><a href="ti.html#cb81-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, </span>
 <span id="cb81-3"><a href="ti.html#cb81-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;tSNE&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb81-4"><a href="ti.html#cb81-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-2.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="ti.html#cb82-1" aria-hidden="true"></a><span class="co"># 2D plot</span></span>
 <span id="cb82-2"><a href="ti.html#cb82-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;DC_1&quot;</span>, <span class="st">&quot;DC_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, </span>
 <span id="cb82-3"><a href="ti.html#cb82-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;Diffusion Maps&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb82-4"><a href="ti.html#cb82-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-3.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-3.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="ti.html#cb83-1" aria-hidden="true"></a><span class="co"># 2D plot</span></span>
 <span id="cb83-2"><a href="ti.html#cb83-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, </span>
 <span id="cb83-3"><a href="ti.html#cb83-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;UMAP&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb83-4"><a href="ti.html#cb83-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-4.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-4.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="ti.html#cb84-1" aria-hidden="true"></a><span class="co"># 2D plot</span></span>
 <span id="cb84-2"><a href="ti.html#cb84-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;cluster.id&quot;</span>, </span>
 <span id="cb84-3"><a href="ti.html#cb84-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;tSNE&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>, <span class="dt">show.cluser.id =</span> T)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-5.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-5.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="ti.html#cb85-1" aria-hidden="true"></a><span class="co"># 3D plot </span></span>
 <span id="cb85-2"><a href="ti.html#cb85-2" aria-hidden="true"></a><span class="kw">plot3D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;DC_1&quot;</span>, <span class="st">&quot;DC_2&quot;</span>, <span class="st">&quot;DC_3&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, </span>
 <span id="cb85-3"><a href="ti.html#cb85-3" aria-hidden="true"></a>       <span class="dt">main =</span> <span class="st">&quot;Diffusion Maps CD3&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, </span>
 <span id="cb85-4"><a href="ti.html#cb85-4" aria-hidden="true"></a>       <span class="dt">color.theme =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-6.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-6.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="ti.html#cb86-1" aria-hidden="true"></a><span class="co"># 3D plot </span></span>
 <span id="cb86-2"><a href="ti.html#cb86-2" aria-hidden="true"></a><span class="kw">plot3D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;PC_1&quot;</span>, <span class="st">&quot;PC_2&quot;</span>, <span class="st">&quot;PC_3&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, </span>
 <span id="cb86-3"><a href="ti.html#cb86-3" aria-hidden="true"></a>       <span class="dt">main =</span> <span class="st">&quot;PCA CD3&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, </span>
 <span id="cb86-4"><a href="ti.html#cb86-4" aria-hidden="true"></a>       <span class="dt">color.theme =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-7.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-7.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="ti.html#cb87-1" aria-hidden="true"></a><span class="co"># 3D plot </span></span>
 <span id="cb87-2"><a href="ti.html#cb87-2" aria-hidden="true"></a><span class="kw">plot3D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;PC_1&quot;</span>, <span class="st">&quot;PC_2&quot;</span>, <span class="st">&quot;CD4&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;CD8&quot;</span>, </span>
 <span id="cb87-3"><a href="ti.html#cb87-3" aria-hidden="true"></a>       <span class="dt">main =</span> <span class="st">&quot;PCA relation with CD8&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, </span>
 <span id="cb87-4"><a href="ti.html#cb87-4" aria-hidden="true"></a>       <span class="dt">color.theme =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-8.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-8.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="ti.html#cb88-1" aria-hidden="true"></a><span class="co"># 3D plot </span></span>
 <span id="cb88-2"><a href="ti.html#cb88-2" aria-hidden="true"></a><span class="kw">plot3D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;CD45&quot;</span>, <span class="st">&quot;CD4&quot;</span>, <span class="st">&quot;CD8&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;CD45&quot;</span>, </span>
 <span id="cb88-3"><a href="ti.html#cb88-3" aria-hidden="true"></a>       <span class="dt">main =</span> <span class="st">&quot;marker expression by CD45&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, </span>
 <span id="cb88-4"><a href="ti.html#cb88-4" aria-hidden="true"></a>       <span class="dt">color.theme =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>,<span class="st">&quot;#EEEEEE&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-69-9.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-16-9.png" width="50%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="build-trajectory" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Build Trajectory</h2>
@@ -662,7 +662,7 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <li>Build tree using raw expression matrix</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="ti.html#cb89-1" aria-hidden="true"></a><span class="co"># CytoTree provides five method to build the tree-shaped trajectory: </span></span>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="ti.html#cb89-1" aria-hidden="true"></a><span class="co"># CytoTree provides five methods to build the tree-shaped trajectory: </span></span>
 <span id="cb89-2"><a href="ti.html#cb89-2" aria-hidden="true"></a><span class="co"># 1. Raw expression matrix</span></span>
 <span id="cb89-3"><a href="ti.html#cb89-3" aria-hidden="true"></a><span class="co"># 2. PCA</span></span>
 <span id="cb89-4"><a href="ti.html#cb89-4" aria-hidden="true"></a><span class="co"># 3. tSNE</span></span>
@@ -674,7 +674,7 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb89-10"><a href="ti.html#cb89-10" aria-hidden="true"></a><span class="co"># Tree plot</span></span>
 <span id="cb89-11"><a href="ti.html#cb89-11" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, <span class="dt">show.node.name =</span> F, <span class="dt">cex.size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb89-12"><a href="ti.html#cb89-12" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>, <span class="st">&quot;#EEEEEE&quot;</span>, <span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-70-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-17-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <ul>
 <li><ol start="2" style="list-style-type: decimal">
 <li>Build tree using PCA</li>
@@ -685,7 +685,7 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb90-3"><a href="ti.html#cb90-3" aria-hidden="true"></a><span class="co"># Tree plot</span></span>
 <span id="cb90-4"><a href="ti.html#cb90-4" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, <span class="dt">show.node.name =</span> F, <span class="dt">cex.size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb90-5"><a href="ti.html#cb90-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>, <span class="st">&quot;#EEEEEE&quot;</span>, <span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-71-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-18-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <ul>
 <li><ol start="3" style="list-style-type: decimal">
 <li>Build tree using tSNE</li>
@@ -696,7 +696,7 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb91-3"><a href="ti.html#cb91-3" aria-hidden="true"></a><span class="co"># Tree plot</span></span>
 <span id="cb91-4"><a href="ti.html#cb91-4" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, <span class="dt">show.node.name =</span> F, <span class="dt">cex.size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb91-5"><a href="ti.html#cb91-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>, <span class="st">&quot;#EEEEEE&quot;</span>, <span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-72-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-19-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <ul>
 <li><ol start="4" style="list-style-type: decimal">
 <li>Build tree using Diffusion maps</li>
@@ -707,7 +707,7 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb92-3"><a href="ti.html#cb92-3" aria-hidden="true"></a><span class="co"># Tree plot</span></span>
 <span id="cb92-4"><a href="ti.html#cb92-4" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, <span class="dt">show.node.name =</span> F, <span class="dt">cex.size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb92-5"><a href="ti.html#cb92-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>, <span class="st">&quot;#EEEEEE&quot;</span>, <span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-73-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-20-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <ul>
 <li><ol start="5" style="list-style-type: decimal">
 <li>Build tree using UMAP</li>
@@ -718,10 +718,10 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb93-3"><a href="ti.html#cb93-3" aria-hidden="true"></a><span class="co"># Tree plot</span></span>
 <span id="cb93-4"><a href="ti.html#cb93-4" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;CD3&quot;</span>, <span class="dt">show.node.name =</span> <span class="ot">FALSE</span>, <span class="dt">cex.size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb93-5"><a href="ti.html#cb93-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>, <span class="st">&quot;#EEEEEE&quot;</span>, <span class="st">&quot;#FF3222&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-74-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-21-1.png" width="50%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="optimazation" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Optimazation</h2>
+<div id="optimization" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Optimization</h2>
 <p>The way to choose trajectory was based on two baselines: (i) whether the trajectory fits the real biological progress. (ii) try more combinations of parameters of cluster numbers, cluster methods and dimensionality reduction methods to see whether the tendency of the trajectory kept in common.</p>
 <p>Generally, after analyzing with biological data, the recommended method for clustering was SOM, and the recommended methods to construction trajectory were the expression profile, tSNE or UMAP. The default workflow in <code>CytoTree</code> package was SOM clustering and construction trajectory using the expression profile.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="ti.html#cb94-1" aria-hidden="true"></a><span class="co"># By combining with biological significance, we choose som clustering</span></span>
@@ -731,7 +731,7 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb94-5"><a href="ti.html#cb94-5" aria-hidden="true"></a></span>
 <span id="cb94-6"><a href="ti.html#cb94-6" aria-hidden="true"></a><span class="co"># plot tree </span></span>
 <span id="cb94-7"><a href="ti.html#cb94-7" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;branch.id&quot;</span>, <span class="dt">show.node.name =</span> T, <span class="dt">cex.size =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-75-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-22-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="ti.html#cb95-1" aria-hidden="true"></a><span class="co">############# Modify branch id</span></span>
 <span id="cb95-2"><a href="ti.html#cb95-2" aria-hidden="true"></a>branch.id &lt;-<span class="st"> </span>cyt<span class="op">@</span>meta.data<span class="op">$</span>branch.id</span>
 <span id="cb95-3"><a href="ti.html#cb95-3" aria-hidden="true"></a>branch.id[branch.id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B5&quot;</span>, <span class="st">&quot;B2&quot;</span>, <span class="st">&quot;B10&quot;</span>)] =<span class="st"> &quot;CD4 T cells&quot;</span></span>
@@ -754,22 +754,22 @@ The related function names of these clustering methods were <code>runSOM</code>,
 <span id="cb95-20"><a href="ti.html#cb95-20" aria-hidden="true"></a></span>
 <span id="cb95-21"><a href="ti.html#cb95-21" aria-hidden="true"></a><span class="co"># Plot tree</span></span>
 <span id="cb95-22"><a href="ti.html#cb95-22" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;branch.id&quot;</span>, <span class="dt">show.node.name =</span> <span class="ot">TRUE</span>, <span class="dt">cex.size =</span> <span class="dv">1</span>) </span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-75-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-22-2.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="ti.html#cb96-1" aria-hidden="true"></a><span class="co"># tSNE plot for branches</span></span>
 <span id="cb96-2"><a href="ti.html#cb96-2" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;branch.id&quot;</span>, </span>
 <span id="cb96-3"><a href="ti.html#cb96-3" aria-hidden="true"></a>       <span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;tSNE&quot;</span>, <span class="dt">category =</span> <span class="st">&quot;categorical&quot;</span>, <span class="dt">show.cluser.id =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-75-3.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-22-3.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="ti.html#cb97-1" aria-hidden="true"></a><span class="co"># Run differential expressed markers of different branch</span></span>
 <span id="cb97-2"><a href="ti.html#cb97-2" aria-hidden="true"></a>diff.info &lt;-<span class="st"> </span><span class="kw">runDiff</span>(cyt)</span>
 <span id="cb97-3"><a href="ti.html#cb97-3" aria-hidden="true"></a></span>
 <span id="cb97-4"><a href="ti.html#cb97-4" aria-hidden="true"></a><span class="co"># plot heatmap of clusters and branches</span></span>
 <span id="cb97-5"><a href="ti.html#cb97-5" aria-hidden="true"></a><span class="kw">plotClusterHeatmap</span>(cyt)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-75-4.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-22-4.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="ti.html#cb98-1" aria-hidden="true"></a><span class="kw">plotClusterHeatmap</span>(cyt, <span class="dt">color =</span> <span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;yellow&quot;</span>))(<span class="dv">100</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-75-5.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-22-5.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="ti.html#cb99-1" aria-hidden="true"></a><span class="kw">plotBranchHeatmap</span>(cyt, <span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;#00599F&quot;</span>, <span class="st">&quot;#FFFFFF&quot;</span>, <span class="st">&quot;#FF3222&quot;</span>))(<span class="dv">100</span>), </span>
 <span id="cb99-2"><a href="ti.html#cb99-2" aria-hidden="true"></a>                  <span class="dt">clustering_method =</span> <span class="st">&quot;complete&quot;</span>)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-75-6.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-22-6.png" width="50%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

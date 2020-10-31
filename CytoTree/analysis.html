@@ -24,7 +24,7 @@
 <meta name="author" content="Yuting Dai" />
 
 
-<meta name="date" content="2020-10-31" />
+<meta name="date" content="2020-11-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +155,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="ti.html"><a href="ti.html#preprocessing-using-cytotree"><i class="fa fa-check"></i><b>3.1.2</b> Preprocessing using <code>CytoTree</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="ti.html"><a href="ti.html#clustering"><i class="fa fa-check"></i><b>3.2</b> Clustering</a></li>
-<li class="chapter" data-level="3.3" data-path="ti.html"><a href="ti.html#dimenssionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Dimenssionality Reduction</a></li>
+<li class="chapter" data-level="3.3" data-path="ti.html"><a href="ti.html#dimensionality-reduction"><i class="fa fa-check"></i><b>3.3</b> Dimensionality Reduction</a></li>
 <li class="chapter" data-level="3.4" data-path="ti.html"><a href="ti.html#build-trajectory"><i class="fa fa-check"></i><b>3.4</b> Build Trajectory</a></li>
-<li class="chapter" data-level="3.5" data-path="ti.html"><a href="ti.html#optimazation"><i class="fa fa-check"></i><b>3.5</b> Optimazation</a></li>
+<li class="chapter" data-level="3.5" data-path="ti.html"><a href="ti.html#optimization"><i class="fa fa-check"></i><b>3.5</b> Optimization</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis of TI</a>
 <ul>
@@ -177,11 +177,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#bug-reports"><i class="fa fa-check"></i>Bug Reports</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#current-version"><i class="fa fa-check"></i>Current version</a></li>
-<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#acknowledgement"><i class="fa fa-check"></i>Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#acknowledgment"><i class="fa fa-check"></i>Acknowledgment</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#session-information"><i class="fa fa-check"></i>Session Information</a></li>
 <li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#reference"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="" data-path="about-cytotree.html"><a href="about-cytotree.html#about-the-author"><i class="fa fa-check"></i>About The Author</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About The Author</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -208,9 +208,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> Pseudotime</h2>
 <p>In this part, we will use the CYT object generated in Trajectory Inference chapter <a href="ti.html#ti">3</a>.</p>
 <p>The algorithm used to estimate pseudotime was based on prior knowledge derivation. The steps to estimate pseudotime could be divided into four parts.</p>
-<p>Step 1, the definition of root cells. A root cell was the initiation site of differentiation, or the start point of the biogical process. The pseudotime in root cells was first set up to zero.</p>
+<p>Step 1, the definition of root cells. A root cell was the initiation site of differentiation or the start point of the biological process. The pseudotime in root cells was first set up to zero.</p>
 <p>Step 2, construction of the graph to connect all cells using the k-nearest neighbors (KNN) algorithm.</p>
-<p>Step 3, calculation of distance from root cells to all other cells by shortest paths.</p>
+<p>Step 3, calculation of the distance from root cells to all other cells by shortest paths.</p>
 <p>Step 4, calculation of pseudotime of each cell.</p>
 <p><code>Cytotree</code> provides a convenient way to calculate pseudotime.</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="analysis.html#cb100-1" aria-hidden="true"></a><span class="co"># Set HSPCs as root cells</span></span>
@@ -224,19 +224,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb101-5"><a href="analysis.html#cb101-5" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;tSNE_1&quot;</span>, <span class="st">&quot;tSNE_2&quot;</span>), <span class="dt">category =</span> <span class="st">&quot;numeric&quot;</span>,</span>
 <span id="cb101-6"><a href="analysis.html#cb101-6" aria-hidden="true"></a>       <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">color.by =</span> <span class="st">&quot;pseudotime&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb101-7"><a href="analysis.html#cb101-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#F4D31D&quot;</span>, <span class="st">&quot;#FF3222&quot;</span>,<span class="st">&quot;#7A06A0&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-77-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-24-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="analysis.html#cb102-1" aria-hidden="true"></a><span class="co"># Visualization for pseudotime in Tree</span></span>
 <span id="cb102-2"><a href="analysis.html#cb102-2" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;pseudotime&quot;</span>, <span class="dt">cex.size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb102-3"><a href="analysis.html#cb102-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#F4D31D&quot;</span>,<span class="st">&quot;#FF3222&quot;</span>,<span class="st">&quot;#7A06A0&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-77-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-24-2.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="analysis.html#cb103-1" aria-hidden="true"></a><span class="co"># Visualization for pseudotime density</span></span>
 <span id="cb103-2"><a href="analysis.html#cb103-2" aria-hidden="true"></a><span class="kw">plotPseudotimeDensity</span>(cyt, <span class="dt">adjust =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-78-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="analysis.html#cb104-1" aria-hidden="true"></a><span class="co"># Visualization for the correlation of pseudotime and markers</span></span>
 <span id="cb104-2"><a href="analysis.html#cb104-2" aria-hidden="true"></a><span class="kw">plotPseudotimeTraj</span>(cyt, <span class="dt">var.cols =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb104-3"><a href="analysis.html#cb104-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_colour_gradientn</span>(<span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#F4D31D&quot;</span>, <span class="st">&quot;#FF3222&quot;</span>,<span class="st">&quot;#7A06A0&quot;</span>))</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-78-2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-25-2.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="intermediate-states" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Intermediate States</h2>
@@ -244,14 +244,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To calculate intermediate state cells, the leaf cells need to be defined first. The leaf cells were the terminal site of differentiation. During the biological process, the differentiation was always multidirectional. The intermediate state cells were the cells that occurred most likely in the shortest path between leaf cells and root cells based on the modified KNN network.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="analysis.html#cb106-1" aria-hidden="true"></a><span class="co">##### View Trajectory Tree</span></span>
 <span id="cb106-2"><a href="analysis.html#cb106-2" aria-hidden="true"></a><span class="kw">plotTree</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;branch.id&quot;</span>, <span class="dt">show.node.name =</span> <span class="ot">TRUE</span>, <span class="dt">cex.size =</span> <span class="dv">1</span>) </span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-79-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="analysis.html#cb107-1" aria-hidden="true"></a><span class="co">###### Intermediate state cells for CD8 T cells</span></span>
 <span id="cb107-2"><a href="analysis.html#cb107-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">defLeafCells</span>(cyt, <span class="dt">leaf.cells =</span> <span class="kw">c</span>(<span class="dv">99</span>,<span class="dv">97</span>))</span>
 <span id="cb107-3"><a href="analysis.html#cb107-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runWalk</span>(cyt, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## 2020-10-31 19:36:46 Calculating walk between root.cells and leaf.cells .</code></pre>
-<pre><code>## 2020-10-31 19:36:49 Generating an adjacency matrix.</code></pre>
-<pre><code>## 2020-10-31 19:37:57 Walk forward.</code></pre>
-<pre><code>## 2020-10-31 19:38:03 Calculating walk completed.</code></pre>
+<pre><code>## 2020-11-01 00:15:24 Calculating walk between root.cells and leaf.cells .</code></pre>
+<pre><code>## 2020-11-01 00:15:27 Generating an adjacency matrix.</code></pre>
+<pre><code>## 2020-11-01 00:16:42 Walk forward.</code></pre>
+<pre><code>## 2020-11-01 00:16:48 Calculating walk completed.</code></pre>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="analysis.html#cb112-1" aria-hidden="true"></a>cyt<span class="op">@</span>meta.data<span class="op">$</span>traj.value.log.CD8T &lt;-<span class="st"> </span>cyt<span class="op">@</span>meta.data<span class="op">$</span>traj.value.log</span>
 <span id="cb112-2"><a href="analysis.html#cb112-2" aria-hidden="true"></a></span>
 <span id="cb112-3"><a href="analysis.html#cb112-3" aria-hidden="true"></a><span class="co">### fetch plot information</span></span>
@@ -266,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb112-12"><a href="analysis.html#cb112-12" aria-hidden="true"></a>         <span class="dt">cluster_rows =</span> T, <span class="dt">cluster_cols =</span> F, <span class="dt">cluster_method =</span> <span class="st">&quot;ward.D&quot;</span>,</span>
 <span id="cb112-13"><a href="analysis.html#cb112-13" aria-hidden="true"></a>         <span class="dt">color =</span> <span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>))(<span class="dv">100</span>),</span>
 <span id="cb112-14"><a href="analysis.html#cb112-14" aria-hidden="true"></a>         <span class="dt">fontsize_col =</span> <span class="fl">0.01</span>)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-79-2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-26-2.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
