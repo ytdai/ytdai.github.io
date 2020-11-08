@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Advanced Usage | CytoTree Tutorial</title>
   <meta name="description" content="This is the tutorial of CytoTree R/Biocondcutor package." />
-  <meta name="generator" content="bookdown 0.21.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Advanced Usage | CytoTree Tutorial" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Yuting Dai" />
 
 
-<meta name="date" content="2020-11-01" />
+<meta name="date" content="2020-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,7 +171,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="time-course-data-use-case.html"><a href="time-course-data-use-case.html#step-3.-pseudotime"><i class="fa fa-check"></i><b>5.3</b> Step 3. Pseudotime</a></li>
 <li class="chapter" data-level="5.4" data-path="time-course-data-use-case.html"><a href="time-course-data-use-case.html#step-4.-subset-cyt"><i class="fa fa-check"></i><b>5.4</b> Step 4. Subset CYT</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="advanced-usage.html"><a href="advanced-usage.html"><i class="fa fa-check"></i><b>6</b> Advanced Usage</a></li>
+<li class="chapter" data-level="6" data-path="advanced-usage.html"><a href="advanced-usage.html"><i class="fa fa-check"></i><b>6</b> Advanced Usage</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="advanced-usage.html"><a href="advanced-usage.html#fetch-meta-data"><i class="fa fa-check"></i><b>6.1</b> Fetch meta data</a></li>
+<li class="chapter" data-level="6.2" data-path="advanced-usage.html"><a href="advanced-usage.html#add-meta-data"><i class="fa fa-check"></i><b>6.2</b> Add meta data</a></li>
+<li class="chapter" data-level="6.3" data-path="advanced-usage.html"><a href="advanced-usage.html#fetch-cells"><i class="fa fa-check"></i><b>6.3</b> Fetch cells</a></li>
+<li class="chapter" data-level="6.4" data-path="advanced-usage.html"><a href="advanced-usage.html#subset-object"><i class="fa fa-check"></i><b>6.4</b> Subset object</a></li>
+<li class="chapter" data-level="6.5" data-path="advanced-usage.html"><a href="advanced-usage.html#batch-effect"><i class="fa fa-check"></i><b>6.5</b> Batch effect</a></li>
+<li class="chapter" data-level="6.6" data-path="advanced-usage.html"><a href="advanced-usage.html#change-markers"><i class="fa fa-check"></i><b>6.6</b> Change markers</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="structure-of-cytotree.html"><a href="structure-of-cytotree.html"><i class="fa fa-check"></i><b>7</b> Structure of CytoTree</a></li>
 <li class="chapter" data-level="8" data-path="about-cytotree.html"><a href="about-cytotree.html"><i class="fa fa-check"></i><b>8</b> About CytoTree</a>
 <ul>
@@ -204,63 +212,203 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="advanced-usage" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Advanced Usage</h1>
 <p>First, we build a CYT object with data in the extended data of <code>CytoTree</code> and build the tree-shaped trajectory.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="advanced-usage.html#cb156-1" aria-hidden="true"></a><span class="co"># Loading packages</span></span>
-<span id="cb156-2"><a href="advanced-usage.html#cb156-2" aria-hidden="true"></a><span class="kw">suppressMessages</span>({</span>
-<span id="cb156-3"><a href="advanced-usage.html#cb156-3" aria-hidden="true"></a><span class="kw">library</span>(CytoTree)</span>
-<span id="cb156-4"><a href="advanced-usage.html#cb156-4" aria-hidden="true"></a>})</span>
-<span id="cb156-5"><a href="advanced-usage.html#cb156-5" aria-hidden="true"></a></span>
-<span id="cb156-6"><a href="advanced-usage.html#cb156-6" aria-hidden="true"></a><span class="co"># Read fcs files</span></span>
-<span id="cb156-7"><a href="advanced-usage.html#cb156-7" aria-hidden="true"></a>fcs.path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;CytoTree&quot;</span>)</span>
-<span id="cb156-8"><a href="advanced-usage.html#cb156-8" aria-hidden="true"></a>fcs.files &lt;-<span class="st"> </span><span class="kw">list.files</span>(fcs.path, <span class="dt">pattern =</span> <span class="st">&#39;.FCS$&#39;</span>, <span class="dt">full =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb156-9"><a href="advanced-usage.html#cb156-9" aria-hidden="true"></a></span>
-<span id="cb156-10"><a href="advanced-usage.html#cb156-10" aria-hidden="true"></a>fcs.data &lt;-<span class="st"> </span><span class="kw">runExprsMerge</span>(fcs.files, <span class="dt">comp =</span> <span class="ot">FALSE</span>, <span class="dt">transformMethod =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb156-11"><a href="advanced-usage.html#cb156-11" aria-hidden="true"></a></span>
-<span id="cb156-12"><a href="advanced-usage.html#cb156-12" aria-hidden="true"></a><span class="co"># Refine colnames of fcs data</span></span>
-<span id="cb156-13"><a href="advanced-usage.html#cb156-13" aria-hidden="true"></a>recol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">`</span><span class="dt">FITC-A&lt;CD43&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD43&quot;</span>, <span class="st">`</span><span class="dt">APC-A&lt;CD34&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD34&quot;</span>, </span>
-<span id="cb156-14"><a href="advanced-usage.html#cb156-14" aria-hidden="true"></a>           <span class="st">`</span><span class="dt">BV421-A&lt;CD90&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD90&quot;</span>, <span class="st">`</span><span class="dt">BV510-A&lt;CD45RA&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD45RA&quot;</span>, </span>
-<span id="cb156-15"><a href="advanced-usage.html#cb156-15" aria-hidden="true"></a>           <span class="st">`</span><span class="dt">BV605-A&lt;CD31&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD31&quot;</span>, <span class="st">`</span><span class="dt">BV650-A&lt;CD49f&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD49f&quot;</span>,</span>
-<span id="cb156-16"><a href="advanced-usage.html#cb156-16" aria-hidden="true"></a>           <span class="st">`</span><span class="dt">BV 735-A&lt;CD73&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD73&quot;</span>, <span class="st">`</span><span class="dt">BV786-A&lt;CD45&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD45&quot;</span>, </span>
-<span id="cb156-17"><a href="advanced-usage.html#cb156-17" aria-hidden="true"></a>           <span class="st">`</span><span class="dt">PE-A&lt;FLK1&gt;</span><span class="st">`</span> =<span class="st"> &quot;FLK1&quot;</span>, <span class="st">`</span><span class="dt">PE-Cy7-A&lt;CD38&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD38&quot;</span>)</span>
-<span id="cb156-18"><a href="advanced-usage.html#cb156-18" aria-hidden="true"></a><span class="kw">colnames</span>(fcs.data)[<span class="kw">match</span>(<span class="kw">names</span>(recol), <span class="kw">colnames</span>(fcs.data))] =<span class="st"> </span>recol</span>
-<span id="cb156-19"><a href="advanced-usage.html#cb156-19" aria-hidden="true"></a>fcs.data &lt;-<span class="st"> </span>fcs.data[, recol]</span>
-<span id="cb156-20"><a href="advanced-usage.html#cb156-20" aria-hidden="true"></a></span>
-<span id="cb156-21"><a href="advanced-usage.html#cb156-21" aria-hidden="true"></a><span class="co"># Build the CYT object</span></span>
-<span id="cb156-22"><a href="advanced-usage.html#cb156-22" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">createCYT</span>(<span class="dt">raw.data =</span> fcs.data, <span class="dt">normalization.method =</span> <span class="st">&quot;log&quot;</span>)</span>
-<span id="cb156-23"><a href="advanced-usage.html#cb156-23" aria-hidden="true"></a></span>
-<span id="cb156-24"><a href="advanced-usage.html#cb156-24" aria-hidden="true"></a><span class="co"># Run CytoTree as pipeline and visualize as tree</span></span>
-<span id="cb156-25"><a href="advanced-usage.html#cb156-25" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb156-26"><a href="advanced-usage.html#cb156-26" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runFastPCA</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runTSNE</span>() <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">runDiffusionMap</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runUMAP</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">buildTree</span>()</span></code></pre></div>
-<pre><code>## Mapping data to SOM</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="advanced-usage.html#cb158-1" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-32-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="advanced-usage.html#cb140-1" aria-hidden="true"></a><span class="co"># Loading packages</span></span>
+<span id="cb140-2"><a href="advanced-usage.html#cb140-2" aria-hidden="true"></a><span class="kw">suppressMessages</span>({</span>
+<span id="cb140-3"><a href="advanced-usage.html#cb140-3" aria-hidden="true"></a><span class="kw">library</span>(CytoTree)</span>
+<span id="cb140-4"><a href="advanced-usage.html#cb140-4" aria-hidden="true"></a>})</span>
+<span id="cb140-5"><a href="advanced-usage.html#cb140-5" aria-hidden="true"></a></span>
+<span id="cb140-6"><a href="advanced-usage.html#cb140-6" aria-hidden="true"></a><span class="co"># Read fcs files</span></span>
+<span id="cb140-7"><a href="advanced-usage.html#cb140-7" aria-hidden="true"></a>fcs.path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;CytoTree&quot;</span>)</span>
+<span id="cb140-8"><a href="advanced-usage.html#cb140-8" aria-hidden="true"></a>fcs.files &lt;-<span class="st"> </span><span class="kw">list.files</span>(fcs.path, <span class="dt">pattern =</span> <span class="st">&#39;.FCS$&#39;</span>, <span class="dt">full =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb140-9"><a href="advanced-usage.html#cb140-9" aria-hidden="true"></a></span>
+<span id="cb140-10"><a href="advanced-usage.html#cb140-10" aria-hidden="true"></a>fcs.data &lt;-<span class="st"> </span><span class="kw">runExprsMerge</span>(fcs.files, <span class="dt">comp =</span> <span class="ot">FALSE</span>, <span class="dt">transformMethod =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb140-11"><a href="advanced-usage.html#cb140-11" aria-hidden="true"></a></span>
+<span id="cb140-12"><a href="advanced-usage.html#cb140-12" aria-hidden="true"></a><span class="co"># Refine colnames of fcs data</span></span>
+<span id="cb140-13"><a href="advanced-usage.html#cb140-13" aria-hidden="true"></a>recol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">`</span><span class="dt">FITC-A&lt;CD43&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD43&quot;</span>, <span class="st">`</span><span class="dt">APC-A&lt;CD34&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD34&quot;</span>, </span>
+<span id="cb140-14"><a href="advanced-usage.html#cb140-14" aria-hidden="true"></a>           <span class="st">`</span><span class="dt">BV421-A&lt;CD90&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD90&quot;</span>, <span class="st">`</span><span class="dt">BV510-A&lt;CD45RA&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD45RA&quot;</span>, </span>
+<span id="cb140-15"><a href="advanced-usage.html#cb140-15" aria-hidden="true"></a>           <span class="st">`</span><span class="dt">BV605-A&lt;CD31&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD31&quot;</span>, <span class="st">`</span><span class="dt">BV650-A&lt;CD49f&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD49f&quot;</span>,</span>
+<span id="cb140-16"><a href="advanced-usage.html#cb140-16" aria-hidden="true"></a>           <span class="st">`</span><span class="dt">BV 735-A&lt;CD73&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD73&quot;</span>, <span class="st">`</span><span class="dt">BV786-A&lt;CD45&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD45&quot;</span>, </span>
+<span id="cb140-17"><a href="advanced-usage.html#cb140-17" aria-hidden="true"></a>           <span class="st">`</span><span class="dt">PE-A&lt;FLK1&gt;</span><span class="st">`</span> =<span class="st"> &quot;FLK1&quot;</span>, <span class="st">`</span><span class="dt">PE-Cy7-A&lt;CD38&gt;</span><span class="st">`</span> =<span class="st"> &quot;CD38&quot;</span>)</span>
+<span id="cb140-18"><a href="advanced-usage.html#cb140-18" aria-hidden="true"></a><span class="kw">colnames</span>(fcs.data)[<span class="kw">match</span>(<span class="kw">names</span>(recol), <span class="kw">colnames</span>(fcs.data))] =<span class="st"> </span>recol</span>
+<span id="cb140-19"><a href="advanced-usage.html#cb140-19" aria-hidden="true"></a>fcs.data &lt;-<span class="st"> </span>fcs.data[, recol]</span>
+<span id="cb140-20"><a href="advanced-usage.html#cb140-20" aria-hidden="true"></a></span>
+<span id="cb140-21"><a href="advanced-usage.html#cb140-21" aria-hidden="true"></a><span class="co"># Build the CYT object</span></span>
+<span id="cb140-22"><a href="advanced-usage.html#cb140-22" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">createCYT</span>(<span class="dt">raw.data =</span> fcs.data, <span class="dt">normalization.method =</span> <span class="st">&quot;log&quot;</span>)</span>
+<span id="cb140-23"><a href="advanced-usage.html#cb140-23" aria-hidden="true"></a></span>
+<span id="cb140-24"><a href="advanced-usage.html#cb140-24" aria-hidden="true"></a><span class="co"># Run CytoTree as pipeline and visualize as tree</span></span>
+<span id="cb140-25"><a href="advanced-usage.html#cb140-25" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb140-26"><a href="advanced-usage.html#cb140-26" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb140-27"><a href="advanced-usage.html#cb140-27" aria-hidden="true"></a><span class="st">  </span><span class="kw">runFastPCA</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runTSNE</span>() <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">runDiffusionMap</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runUMAP</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb140-28"><a href="advanced-usage.html#cb140-28" aria-hidden="true"></a><span class="st">  </span><span class="kw">buildTree</span>()</span>
+<span id="cb140-29"><a href="advanced-usage.html#cb140-29" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-38-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<div id="fetch-meta-data" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Fetch meta data</h2>
 <p>The first advanced usage is to fetch plot meta information of <code>CytoTree</code>.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="advanced-usage.html#cb159-1" aria-hidden="true"></a><span class="co"># Fetching plot meta information for each cell</span></span>
-<span id="cb159-2"><a href="advanced-usage.html#cb159-2" aria-hidden="true"></a>plot.meta &lt;-<span class="st"> </span><span class="kw">fetchPlotMeta</span>(cyt)</span>
-<span id="cb159-3"><a href="advanced-usage.html#cb159-3" aria-hidden="true"></a><span class="kw">head</span>(plot.meta)</span>
-<span id="cb159-4"><a href="advanced-usage.html#cb159-4" aria-hidden="true"></a></span>
-<span id="cb159-5"><a href="advanced-usage.html#cb159-5" aria-hidden="true"></a><span class="co"># Fetching plot meta information for each cluster</span></span>
-<span id="cb159-6"><a href="advanced-usage.html#cb159-6" aria-hidden="true"></a>cluster.meta &lt;-<span class="st"> </span><span class="kw">fetchClustMeta</span>(cyt)</span>
-<span id="cb159-7"><a href="advanced-usage.html#cb159-7" aria-hidden="true"></a><span class="kw">head</span>(cluster.meta)</span>
-<span id="cb159-8"><a href="advanced-usage.html#cb159-8" aria-hidden="true"></a></span>
-<span id="cb159-9"><a href="advanced-usage.html#cb159-9" aria-hidden="true"></a><span class="co"># Or fetching cells </span></span>
-<span id="cb159-10"><a href="advanced-usage.html#cb159-10" aria-hidden="true"></a>cell.fetch &lt;-<span class="st"> </span><span class="kw">fetchCell</span>(cyt, <span class="dt">stage =</span> <span class="kw">c</span>(<span class="st">&quot;D0&quot;</span>, <span class="st">&quot;D10&quot;</span>))</span>
-<span id="cb159-11"><a href="advanced-usage.html#cb159-11" aria-hidden="true"></a><span class="kw">head</span>(cell.fetch)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="advanced-usage.html#cb141-1" aria-hidden="true"></a><span class="co"># Fetch plot meta information for each cell</span></span>
+<span id="cb141-2"><a href="advanced-usage.html#cb141-2" aria-hidden="true"></a>plot.meta &lt;-<span class="st"> </span><span class="kw">fetchPlotMeta</span>(cyt)</span>
+<span id="cb141-3"><a href="advanced-usage.html#cb141-3" aria-hidden="true"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(plot.meta))</span>
+<span id="cb141-4"><a href="advanced-usage.html#cb141-4" aria-hidden="true"></a></span>
+<span id="cb141-5"><a href="advanced-usage.html#cb141-5" aria-hidden="true"></a><span class="co"># Fetch plot meta information for each cluster</span></span>
+<span id="cb141-6"><a href="advanced-usage.html#cb141-6" aria-hidden="true"></a>cluster.meta &lt;-<span class="st"> </span><span class="kw">fetchClustMeta</span>(cyt)</span>
+<span id="cb141-7"><a href="advanced-usage.html#cb141-7" aria-hidden="true"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(cluster.meta))</span></code></pre></div>
+</div>
+<div id="add-meta-data" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Add meta data</h2>
 <p>The second advanced usage of <code>CytoTree</code> is to add meta-information to meta.data</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="advanced-usage.html#cb160-1" aria-hidden="true"></a><span class="co"># Add meta-information in CytoTree meta.data</span></span>
-<span id="cb160-2"><a href="advanced-usage.html#cb160-2" aria-hidden="true"></a>meta.information &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;.FCS.+&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">rownames</span>(fcs.data))</span>
-<span id="cb160-3"><a href="advanced-usage.html#cb160-3" aria-hidden="true"></a>meta.information[<span class="op">!</span>meta.information <span class="op">%in%</span><span class="st"> &quot;D0&quot;</span>] &lt;-<span class="st"> &quot;not_D0&quot;</span></span>
-<span id="cb160-4"><a href="advanced-usage.html#cb160-4" aria-hidden="true"></a><span class="kw">names</span>(meta.information) &lt;-<span class="st"> </span><span class="kw">rownames</span>(fcs.data)</span>
-<span id="cb160-5"><a href="advanced-usage.html#cb160-5" aria-hidden="true"></a></span>
-<span id="cb160-6"><a href="advanced-usage.html#cb160-6" aria-hidden="true"></a><span class="co"># Change stage </span></span>
-<span id="cb160-7"><a href="advanced-usage.html#cb160-7" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">addMetaData</span>(cyt, <span class="dt">meta.info =</span> meta.information, <span class="dt">name =</span> <span class="st">&quot;stage&quot;</span>)</span>
-<span id="cb160-8"><a href="advanced-usage.html#cb160-8" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-34-1.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="advanced-usage.html#cb161-1" aria-hidden="true"></a><span class="co"># Run PCA and view cell information as our new column</span></span>
-<span id="cb161-2"><a href="advanced-usage.html#cb161-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runFastPCA</span>(cyt)</span>
-<span id="cb161-3"><a href="advanced-usage.html#cb161-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">addMetaData</span>(cyt, <span class="dt">meta.info =</span> meta.information, <span class="dt">name =</span> <span class="st">&quot;Mycol&quot;</span>)</span>
-<span id="cb161-4"><a href="advanced-usage.html#cb161-4" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;Mycol&quot;</span>, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;PC_1&quot;</span>, <span class="st">&quot;PC_2&quot;</span>))</span></code></pre></div>
-<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-34-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="advanced-usage.html#cb142-1" aria-hidden="true"></a><span class="co"># Old stage back up</span></span>
+<span id="cb142-2"><a href="advanced-usage.html#cb142-2" aria-hidden="true"></a>plot.meta &lt;-<span class="st"> </span><span class="kw">fetchPlotMeta</span>(cyt)</span>
+<span id="cb142-3"><a href="advanced-usage.html#cb142-3" aria-hidden="true"></a>old.stage &lt;-<span class="st"> </span>plot.meta<span class="op">$</span>stage</span>
+<span id="cb142-4"><a href="advanced-usage.html#cb142-4" aria-hidden="true"></a></span>
+<span id="cb142-5"><a href="advanced-usage.html#cb142-5" aria-hidden="true"></a><span class="co"># Add meta-information in CytoTree meta.data</span></span>
+<span id="cb142-6"><a href="advanced-usage.html#cb142-6" aria-hidden="true"></a>meta.information &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;.FCS.+&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">rownames</span>(fcs.data))</span>
+<span id="cb142-7"><a href="advanced-usage.html#cb142-7" aria-hidden="true"></a>meta.information[<span class="op">!</span>meta.information <span class="op">%in%</span><span class="st"> &quot;D0&quot;</span>] &lt;-<span class="st"> &quot;not_D0&quot;</span></span>
+<span id="cb142-8"><a href="advanced-usage.html#cb142-8" aria-hidden="true"></a><span class="kw">names</span>(meta.information) &lt;-<span class="st"> </span><span class="kw">rownames</span>(fcs.data)</span>
+<span id="cb142-9"><a href="advanced-usage.html#cb142-9" aria-hidden="true"></a></span>
+<span id="cb142-10"><a href="advanced-usage.html#cb142-10" aria-hidden="true"></a><span class="co"># Change stage </span></span>
+<span id="cb142-11"><a href="advanced-usage.html#cb142-11" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">addMetaData</span>(cyt, <span class="dt">meta.info =</span> meta.information, <span class="dt">name =</span> <span class="st">&quot;stage&quot;</span>)</span>
+<span id="cb142-12"><a href="advanced-usage.html#cb142-12" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-40-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="advanced-usage.html#cb143-1" aria-hidden="true"></a><span class="co"># Run PCA and view cell information as our new column</span></span>
+<span id="cb143-2"><a href="advanced-usage.html#cb143-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">runFastPCA</span>(cyt)</span>
+<span id="cb143-3"><a href="advanced-usage.html#cb143-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">addMetaData</span>(cyt, <span class="dt">meta.info =</span> meta.information, <span class="dt">name =</span> <span class="st">&quot;Mycol&quot;</span>)</span>
+<span id="cb143-4"><a href="advanced-usage.html#cb143-4" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">color.by =</span> <span class="st">&quot;Mycol&quot;</span>, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;PC_1&quot;</span>, <span class="st">&quot;PC_2&quot;</span>))</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-40-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="advanced-usage.html#cb144-1" aria-hidden="true"></a><span class="co"># Recover old stage </span></span>
+<span id="cb144-2"><a href="advanced-usage.html#cb144-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">addMetaData</span>(cyt, <span class="dt">meta.info =</span> old.stage, <span class="dt">name =</span> <span class="st">&quot;stage&quot;</span>)</span>
+<span id="cb144-3"><a href="advanced-usage.html#cb144-3" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-40-3.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="fetch-cells" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Fetch cells</h2>
+<p>Fetch cells using <code>fetchCell</code></p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="advanced-usage.html#cb145-1" aria-hidden="true"></a><span class="co"># Fetch cells </span></span>
+<span id="cb145-2"><a href="advanced-usage.html#cb145-2" aria-hidden="true"></a>cell.fetch &lt;-<span class="st"> </span><span class="kw">fetchCell</span>(cyt, <span class="dt">stage =</span> <span class="kw">c</span>(<span class="st">&quot;D0&quot;</span>, <span class="st">&quot;D10&quot;</span>))</span></code></pre></div>
+</div>
+<div id="subset-object" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Subset object</h2>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="advanced-usage.html#cb146-1" aria-hidden="true"></a><span class="co"># Fetch cells </span></span>
+<span id="cb146-2"><a href="advanced-usage.html#cb146-2" aria-hidden="true"></a>cell.fetch &lt;-<span class="st"> </span><span class="kw">fetchCell</span>(cyt, <span class="dt">stage =</span> <span class="kw">c</span>(<span class="st">&quot;D0&quot;</span>, <span class="st">&quot;D10&quot;</span>))</span>
+<span id="cb146-3"><a href="advanced-usage.html#cb146-3" aria-hidden="true"></a></span>
+<span id="cb146-4"><a href="advanced-usage.html#cb146-4" aria-hidden="true"></a><span class="co"># Subset object </span></span>
+<span id="cb146-5"><a href="advanced-usage.html#cb146-5" aria-hidden="true"></a>cyt.sub &lt;-<span class="st"> </span><span class="kw">subsetCYT</span>(cyt, <span class="dt">cells =</span> cell.fetch)</span>
+<span id="cb146-6"><a href="advanced-usage.html#cb146-6" aria-hidden="true"></a>cyt.sub</span></code></pre></div>
+<pre><code>## CYT Information:
+##  Input cell number: 200  cells 
+##  Enroll marker number: 10  markers 
+##  Cells after downsampling: 200  cells</code></pre>
+</div>
+<div id="batch-effect" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Batch effect</h2>
+<p>CytoTree provide function to correcto batch effects based on <code>ComBat</code> in <code>sva</code> R package.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="advanced-usage.html#cb148-1" aria-hidden="true"></a><span class="co"># Correct batch effect in building the CYT object</span></span>
+<span id="cb148-2"><a href="advanced-usage.html#cb148-2" aria-hidden="true"></a>batch &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;.FCS.+&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">rownames</span>(fcs.data))</span>
+<span id="cb148-3"><a href="advanced-usage.html#cb148-3" aria-hidden="true"></a>batch &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.factor</span>(batch))</span>
+<span id="cb148-4"><a href="advanced-usage.html#cb148-4" aria-hidden="true"></a></span>
+<span id="cb148-5"><a href="advanced-usage.html#cb148-5" aria-hidden="true"></a><span class="co"># Build the CYT object without batch correction</span></span>
+<span id="cb148-6"><a href="advanced-usage.html#cb148-6" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">createCYT</span>(<span class="dt">raw.data =</span> fcs.data, <span class="dt">normalization.method =</span> <span class="st">&quot;log&quot;</span>)</span>
+<span id="cb148-7"><a href="advanced-usage.html#cb148-7" aria-hidden="true"></a></span>
+<span id="cb148-8"><a href="advanced-usage.html#cb148-8" aria-hidden="true"></a><span class="co"># Run CytoTree as pipeline and visualize as tree</span></span>
+<span id="cb148-9"><a href="advanced-usage.html#cb148-9" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb148-10"><a href="advanced-usage.html#cb148-10" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb148-11"><a href="advanced-usage.html#cb148-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">runFastPCA</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runTSNE</span>() <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">runDiffusionMap</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runUMAP</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb148-12"><a href="advanced-usage.html#cb148-12" aria-hidden="true"></a><span class="st">  </span><span class="kw">buildTree</span>()</span>
+<span id="cb148-13"><a href="advanced-usage.html#cb148-13" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;stage&quot;</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-43-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="advanced-usage.html#cb149-1" aria-hidden="true"></a><span class="co"># Correct batch and re-run the pipeline</span></span>
+<span id="cb149-2"><a href="advanced-usage.html#cb149-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">correctBatchCYT</span>(cyt, <span class="dt">batch =</span> batch)</span>
+<span id="cb149-3"><a href="advanced-usage.html#cb149-3" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb149-4"><a href="advanced-usage.html#cb149-4" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb149-5"><a href="advanced-usage.html#cb149-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">runFastPCA</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runTSNE</span>() <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">runDiffusionMap</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runUMAP</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb149-6"><a href="advanced-usage.html#cb149-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">buildTree</span>()</span>
+<span id="cb149-7"><a href="advanced-usage.html#cb149-7" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;stage&quot;</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-43-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="advanced-usage.html#cb150-1" aria-hidden="true"></a><span class="co"># Or build the CYT object with batch correction</span></span>
+<span id="cb150-2"><a href="advanced-usage.html#cb150-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">createCYT</span>(<span class="dt">raw.data =</span> fcs.data, </span>
+<span id="cb150-3"><a href="advanced-usage.html#cb150-3" aria-hidden="true"></a>                 <span class="dt">batch =</span> batch, <span class="dt">batch.correct =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb150-4"><a href="advanced-usage.html#cb150-4" aria-hidden="true"></a>                 <span class="dt">normalization.method =</span> <span class="st">&quot;log&quot;</span>)</span>
+<span id="cb150-5"><a href="advanced-usage.html#cb150-5" aria-hidden="true"></a></span>
+<span id="cb150-6"><a href="advanced-usage.html#cb150-6" aria-hidden="true"></a><span class="co"># Run CytoTree as pipeline and visualize as tree</span></span>
+<span id="cb150-7"><a href="advanced-usage.html#cb150-7" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb150-8"><a href="advanced-usage.html#cb150-8" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb150-9"><a href="advanced-usage.html#cb150-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">runFastPCA</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runTSNE</span>() <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">runDiffusionMap</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runUMAP</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb150-10"><a href="advanced-usage.html#cb150-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">buildTree</span>()</span>
+<span id="cb150-11"><a href="advanced-usage.html#cb150-11" aria-hidden="true"></a><span class="kw">plot2D</span>(cyt, <span class="dt">item.use =</span> <span class="kw">c</span>(<span class="st">&quot;UMAP_1&quot;</span>, <span class="st">&quot;UMAP_2&quot;</span>), <span class="dt">color.by =</span> <span class="st">&quot;stage&quot;</span>)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-43-3.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="change-markers" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Change markers</h2>
+<p>The default option in <code>CytoTee</code> is to use all markers to calculate the tree-shaped trajectory. If we only want to use a subset of markers, for example, the CD Markers, we can use <code>changeMarker</code> to change markers in the calculation or change them in the building of the CYT object.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="advanced-usage.html#cb151-1" aria-hidden="true"></a><span class="co"># Build the CYT object without batch correction</span></span>
+<span id="cb151-2"><a href="advanced-usage.html#cb151-2" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">createCYT</span>(<span class="dt">raw.data =</span> fcs.data, <span class="dt">normalization.method =</span> <span class="st">&quot;log&quot;</span>)</span>
+<span id="cb151-3"><a href="advanced-usage.html#cb151-3" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb151-4"><a href="advanced-usage.html#cb151-4" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb151-5"><a href="advanced-usage.html#cb151-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">buildTree</span>()</span>
+<span id="cb151-6"><a href="advanced-usage.html#cb151-6" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-44-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="advanced-usage.html#cb152-1" aria-hidden="true"></a><span class="co"># Show all markers</span></span>
+<span id="cb152-2"><a href="advanced-usage.html#cb152-2" aria-hidden="true"></a>knitr<span class="op">::</span><span class="kw">kable</span>(cyt<span class="op">@</span>markers)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CD43</td>
+</tr>
+<tr class="even">
+<td align="left">CD34</td>
+</tr>
+<tr class="odd">
+<td align="left">CD90</td>
+</tr>
+<tr class="even">
+<td align="left">CD45RA</td>
+</tr>
+<tr class="odd">
+<td align="left">CD31</td>
+</tr>
+<tr class="even">
+<td align="left">CD49f</td>
+</tr>
+<tr class="odd">
+<td align="left">CD73</td>
+</tr>
+<tr class="even">
+<td align="left">CD45</td>
+</tr>
+<tr class="odd">
+<td align="left">FLK1</td>
+</tr>
+<tr class="even">
+<td align="left">CD38</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="advanced-usage.html#cb153-1" aria-hidden="true"></a>markers.cal &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;CD43&quot;</span>,<span class="st">&quot;CD34&quot;</span>,<span class="st">&quot;CD90&quot;</span>,<span class="st">&quot;CD45RA&quot;</span>,<span class="st">&quot;CD49f&quot;</span>,<span class="st">&quot;CD45&quot;</span>,<span class="st">&quot;FLK1&quot;</span>,<span class="st">&quot;CD38&quot;</span>)</span>
+<span id="cb153-2"><a href="advanced-usage.html#cb153-2" aria-hidden="true"></a></span>
+<span id="cb153-3"><a href="advanced-usage.html#cb153-3" aria-hidden="true"></a></span>
+<span id="cb153-4"><a href="advanced-usage.html#cb153-4" aria-hidden="true"></a><span class="co"># Change markers using changeMarker</span></span>
+<span id="cb153-5"><a href="advanced-usage.html#cb153-5" aria-hidden="true"></a><span class="co"># This change will not change the raw.data in CTY object</span></span>
+<span id="cb153-6"><a href="advanced-usage.html#cb153-6" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">changeMarker</span>(cyt, <span class="dt">markers =</span> markers.cal)</span>
+<span id="cb153-7"><a href="advanced-usage.html#cb153-7" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb153-8"><a href="advanced-usage.html#cb153-8" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb153-9"><a href="advanced-usage.html#cb153-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">buildTree</span>()</span>
+<span id="cb153-10"><a href="advanced-usage.html#cb153-10" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-44-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="advanced-usage.html#cb154-1" aria-hidden="true"></a><span class="co"># Or change markers using createCYT</span></span>
+<span id="cb154-2"><a href="advanced-usage.html#cb154-2" aria-hidden="true"></a><span class="co"># This change will not change the raw.data in CTY object</span></span>
+<span id="cb154-3"><a href="advanced-usage.html#cb154-3" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span><span class="kw">createCYT</span>(<span class="dt">raw.data =</span> fcs.data, <span class="dt">markers =</span> markers.cal,</span>
+<span id="cb154-4"><a href="advanced-usage.html#cb154-4" aria-hidden="true"></a>                 <span class="dt">normalization.method =</span> <span class="st">&quot;log&quot;</span>)</span>
+<span id="cb154-5"><a href="advanced-usage.html#cb154-5" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb154-6"><a href="advanced-usage.html#cb154-6" aria-hidden="true"></a>cyt &lt;-<span class="st"> </span>cyt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">runCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">processingCluster</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb154-7"><a href="advanced-usage.html#cb154-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">buildTree</span>()</span>
+<span id="cb154-8"><a href="advanced-usage.html#cb154-8" aria-hidden="true"></a><span class="kw">plotPieTree</span>(cyt)</span></code></pre></div>
+<p><img src="CytoTree-tutorial_files/figure-html/unnamed-chunk-44-3.png" width="50%" style="display: block; margin: auto;" /></p>
 
+</div>
 </div>
             </section>
 

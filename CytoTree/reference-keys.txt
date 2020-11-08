@@ -24,5 +24,11 @@ step-2.-trajectory
 step-3.-pseudotime
 step-4.-subset-cyt
 advanced-usage
+fetch-meta-data
+add-meta-data
+fetch-cells
+subset-object
+batch-effect
+change-markers
 structure-of-cytotree
 about-cytotree
